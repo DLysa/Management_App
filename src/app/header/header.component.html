@@ -1,0 +1,12 @@
+ <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Management App</span>
+      <span class="header"></span>
+      <app-menu
+        [options]="options$ | async"
+        (themeChange)="themeChangeHandler($event)">
+      </app-menu>
+      <a mat-raised-button color="accent" href="https://www.google.com/" target="_blank">Wyloguj -></a>
+    </mat-toolbar-row>
+  </mat-toolbar>
+

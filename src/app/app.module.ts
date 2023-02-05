@@ -15,13 +15,16 @@ import { MatListModule } from '@angular/material/list';
 import { TableComponent } from './table/table.component';
 import {CdkDropList} from "@angular/cdk/drag-drop";
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatMenuModule} from "@angular/material/menu";
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SidebarComponent,
-    TableComponent
+    TableComponent,
+    MenuComponent
   ],
     imports: [
         BrowserModule,
@@ -34,7 +37,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
         MatButtonModule,
         MatListModule,
         CdkDropList,
-        DragDropModule
+        DragDropModule,
+        MatMenuModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

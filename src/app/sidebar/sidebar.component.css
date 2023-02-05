@@ -1,0 +1,11 @@
+.sidenav-content{
+  height: 1000px;
+}
+.mat-list-item{
+  height: 150px;
+  width: 200px;
+}
+.mdc-list-item__content{
+height: 150px;
+width: 200px;
+}
