@@ -15,13 +15,21 @@ import { MatListModule } from '@angular/material/list';
 import { TableComponent } from './table/table.component';
 import {CdkDropList} from "@angular/cdk/drag-drop";
 import {DragDropModule} from '@angular/cdk/drag-drop';
+<<<<<<< Updated upstream
+=======
+import {MatMenuModule} from "@angular/material/menu";
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SidebarComponent,
+<<<<<<< Updated upstream
     TableComponent
+=======
+    TableComponent,
+>>>>>>> Stashed changes
   ],
     imports: [
         BrowserModule,
@@ -34,7 +42,11 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
         MatButtonModule,
         MatListModule,
         CdkDropList,
+<<<<<<< Updated upstream
         DragDropModule
+=======
+        DragDropModule,
+>>>>>>> Stashed changes
     ],
   providers: [],
   bootstrap: [AppComponent]
