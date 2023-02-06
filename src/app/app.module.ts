@@ -16,7 +16,6 @@ import { TableComponent } from './table/table.component';
 import {CdkDropList} from "@angular/cdk/drag-drop";
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatMenuModule} from "@angular/material/menu";
-import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import { MenuComponent } from './menu/menu.component';
     HeaderComponent,
     SidebarComponent,
     TableComponent,
-    MenuComponent
   ],
     imports: [
         BrowserModule,
@@ -38,7 +36,6 @@ import { MenuComponent } from './menu/menu.component';
         MatListModule,
         CdkDropList,
         DragDropModule,
-        MatMenuModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

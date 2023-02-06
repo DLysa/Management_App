@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 
-import { Observable } from "rxjs";
-import { Option } from "../option.model";
-import { ThemeService } from "../theme.service";
 
 
 @Component({
@@ -10,16 +7,6 @@ import { ThemeService } from "../theme.service";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit  {
-  options$: Observable<Array<Option>> = this.themeService.getThemeOptions();
+export class HeaderComponent  {
 
-  constructor(private readonly themeService: ThemeService) {}
-
-  ngOnInit() {
-    this.themeService.setTheme("deeppurple-amber");
-  }
-
-  themeChangeHandler(themeToSet: any) {
-    this.themeService.setTheme(themeToSet);
-  }
 }
