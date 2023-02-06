@@ -16,6 +16,7 @@ import { TableComponent } from './table/table.component';
 import {CdkDropList} from "@angular/cdk/drag-drop";
 import {DragDropModule} from '@angular/cdk/drag-drop';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {MatMenuModule} from "@angular/material/menu";
 =======
 <<<<<<< Updated upstream
@@ -23,12 +24,15 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatMenuModule} from "@angular/material/menu";
 >>>>>>> Stashed changes
 >>>>>>> b759d90 (Base fix)
+=======
+>>>>>>> 74919dd (app module configration fix)
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SidebarComponent,
+<<<<<<< HEAD
 <<<<<<< HEAD
     TableComponent,
 =======
@@ -38,6 +42,9 @@ import {MatMenuModule} from "@angular/material/menu";
     TableComponent,
 >>>>>>> Stashed changes
 >>>>>>> b759d90 (Base fix)
+=======
+    TableComponent,
+>>>>>>> 74919dd (app module configration fix)
   ],
     imports: [
         BrowserModule,
@@ -51,6 +58,7 @@ import {MatMenuModule} from "@angular/material/menu";
         MatListModule,
         CdkDropList,
 <<<<<<< HEAD
+<<<<<<< HEAD
         DragDropModule,
 =======
 <<<<<<< Updated upstream
@@ -59,6 +67,9 @@ import {MatMenuModule} from "@angular/material/menu";
         DragDropModule,
 >>>>>>> Stashed changes
 >>>>>>> b759d90 (Base fix)
+=======
+        DragDropModule,
+>>>>>>> 74919dd (app module configration fix)
     ],
   providers: [],
   bootstrap: [AppComponent]
