@@ -1,0 +1,20 @@
+<div class = "task-container">
+  <h1> Tasks</h1>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+        <th> Id</th>
+        <th> Title</th>
+        <th> Description</th>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let task of tasks">
+          <td> {{task.id}}</td>
+          <td> {{task.title}}</td>
+          <td> {{task.description}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

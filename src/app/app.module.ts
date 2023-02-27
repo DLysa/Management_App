@@ -15,6 +15,9 @@ import { MatListModule } from '@angular/material/list';
 import { TableComponent } from './table/table.component';
 import {CdkDropList} from "@angular/cdk/drag-drop";
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {HttpClientModule} from "@angular/common/http";
+import { TaskComponent } from './task/task.component';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     HeaderComponent,
     SidebarComponent,
     TableComponent,
+    TaskComponent,
   ],
     imports: [
         BrowserModule,
@@ -35,6 +39,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
         MatListModule,
         CdkDropList,
         DragDropModule,
+        HttpClientModule
     ],
   providers: [],
   bootstrap: [AppComponent]
