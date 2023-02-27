@@ -7,11 +7,15 @@ import { Task } from "../task";
   providedIn: 'root'
 })
 export class TaskService {
-private  baseUrl = "http://localhost:8080/api/showAllTasks";
+private  baseUrl = "http://localhost:8080/api/";
 
   constructor(private http: HttpClient) { }
 
   getTasks(): Observable<Task[]>{
-    return this.http.get<Task[]>(`${this.baseUrl}`);
+    return this.http.get<Task[]>(`${this.baseUrl}showAllTasks`);
+  }
+
+  addTask(data: any): Observable<any>{
+    return this.http.post(`${this.baseUrl}addTask`,data);
   }
 }

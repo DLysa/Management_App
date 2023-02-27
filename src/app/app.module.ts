@@ -17,6 +17,7 @@ import {CdkDropList} from "@angular/cdk/drag-drop";
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {HttpClientModule} from "@angular/common/http";
 import { TaskComponent } from './task/task.component';
+import { ActionButtonsComponent } from './action-buttons/action-buttons.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { TaskComponent } from './task/task.component';
     SidebarComponent,
     TableComponent,
     TaskComponent,
+    ActionButtonsComponent,
   ],
     imports: [
         BrowserModule,
