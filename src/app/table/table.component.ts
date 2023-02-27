@@ -19,18 +19,16 @@ export class TableComponent  implements OnInit{
   tasks: Task[];
   constructor(private taskService: TaskService) {
   }
-  result:string[];
+  taskTitles:string[];
 
   ngOnInit():void {
     this.taskService.getTasks().subscribe((data:Task[]) =>{
       console.log(data);
       this.tasks=data;
-      this.result = this.tasks.map(a => a.title);
+      this.taskTitles = this.tasks.map(a => a.title);
+      console.log(this.taskTitles);
     })
   }
- //result =['X', 'D'];
-
-
 
 
   drop(event: CdkDragDrop<string[]>) {
