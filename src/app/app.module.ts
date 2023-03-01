@@ -18,6 +18,12 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {HttpClientModule} from "@angular/common/http";
 import { TaskComponent } from './task/task.component';
 import { ActionButtonsComponent } from './action-buttons/action-buttons.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { PopUpFormComponent } from './pop-up-form/pop-up-form.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import { ShowPopUpFormComponent } from './show-pop-up-form/show-pop-up-form.component';
 
 
 @NgModule({
@@ -28,22 +34,30 @@ import { ActionButtonsComponent } from './action-buttons/action-buttons.componen
     TableComponent,
     TaskComponent,
     ActionButtonsComponent,
+    PopUpFormComponent,
+    ShowPopUpFormComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatSidenavModule,
-        LayoutModule,
-        MatButtonModule,
-        MatListModule,
-        CdkDropList,
-        DragDropModule,
-        HttpClientModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    LayoutModule,
+    MatButtonModule,
+    MatListModule,
+    CdkDropList,
+    DragDropModule,
+    HttpClientModule,
+    FormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule
+  ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [PopUpFormComponent]
 })
 export class AppModule { }
