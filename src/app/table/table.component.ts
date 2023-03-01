@@ -22,10 +22,14 @@ export class TableComponent  implements OnInit{
   taskTitles:string[];
 
   ngOnInit():void {
+    this.refresh()
+  }
+
+  refresh(this: any){
     this.taskService.getTasks().subscribe((data:Task[]) =>{
       console.log(data);
       this.tasks=data;
-      this.taskTitles = this.tasks.map(a => a.title);
+      this.taskTitles = this.tasks.map((a: { title: any; }) => a.title);
       console.log(this.taskTitles);
     })
   }
@@ -42,5 +46,15 @@ export class TableComponent  implements OnInit{
         event.currentIndex,
       );
     }
+  }
+
+
+  static refresh(this: any){
+    this.taskService.getTasks().subscribe((data:Task[]) =>{
+      console.log(data);
+      this.tasks=data;
+      this.taskTitles = this.tasks.map((a: { title: any; }) => a.title);
+      console.log(this.taskTitles);
+    })
   }
 }

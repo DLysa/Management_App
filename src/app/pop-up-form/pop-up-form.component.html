@@ -1,11 +1,31 @@
+<div>
+
 <h2 mat-dialog-title>FORM</h2>
 
-<mat-dialog-content [formGroup]="form">
+<mat-dialog-content> <!--[formGroup]="form"-->
+
+  <div>
+    <mat-form-field appearance="outline">
+      <input matInput
+             placeholder="ID :) "
+            class="form-control"
+            id="id"
+            required
+            [(ngModel)]="newTask.id"
+            name="id"
+            >
+      <!--             formControlName="id">-->
+    </mat-form-field>
+  </div>
 <div >
   <mat-form-field appearance="outline">
     <input matInput
            placeholder="Name your task"
-           formControlName="title">
+           class="form-control"
+           id="title"
+           required
+           [(ngModel)]="newTask.title"
+           name="title">
 
   </mat-form-field>
   </div>
@@ -13,13 +33,19 @@
   <mat-form-field appearance="outline">
   <input matInput
          placeholder="Describe your task"
-         formControlName="description">
+         class="form-control"
+         id="description"
+         required
+         [(ngModel)]="newTask.description"
+         name="description">
   </mat-form-field>
   </div>
 
 </mat-dialog-content>
 
-<mat-dialog-actions>
-  <button class="mat-raised-button" (click)="close()">Close</button>
-  <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
+<mat-dialog-actions class="mat-dialog-actions">
+  <button mat-raised-button color="accent" (click)="close()">Close</button>
+  <button mat-raised-button color="accent" (click)="saveTask()">Save</button>
 </mat-dialog-actions>
+
+</div>

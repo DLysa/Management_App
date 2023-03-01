@@ -17,7 +17,6 @@ import {CdkDropList} from "@angular/cdk/drag-drop";
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {HttpClientModule} from "@angular/common/http";
 import { TaskComponent } from './task/task.component';
-import { ActionButtonsComponent } from './action-buttons/action-buttons.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { PopUpFormComponent } from './pop-up-form/pop-up-form.component';
 import {MatDialogModule} from "@angular/material/dialog";
@@ -33,7 +32,6 @@ import { ShowPopUpFormComponent } from './show-pop-up-form/show-pop-up-form.comp
     SidebarComponent,
     TableComponent,
     TaskComponent,
-    ActionButtonsComponent,
     PopUpFormComponent,
     ShowPopUpFormComponent,
   ],
