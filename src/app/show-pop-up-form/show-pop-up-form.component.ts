@@ -11,7 +11,7 @@ export class ShowPopUpFormComponent {
 
   constructor(private dialog: MatDialog) {}
 
-  openDialog() {
+  public openDialog() {
 
     const dialogConfig = new MatDialogConfig();
 

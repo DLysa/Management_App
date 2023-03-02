@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { Task } from "../task";
 import {TaskService} from "../sevices/task.service";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {PopUpFormComponent} from "../pop-up-form/pop-up-form.component";
 
 @Component({
   selector: 'app-table',
@@ -17,7 +19,7 @@ export class TableComponent  implements OnInit{
   done1 = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
 
   tasks: Task[];
-  constructor(private taskService: TaskService) {
+  constructor(private taskService: TaskService,private dialog: MatDialog) {
   }
   taskTitles:string[];
 
@@ -57,4 +59,25 @@ export class TableComponent  implements OnInit{
       console.log(this.taskTitles);
     })
   }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+      id: 1,
+      title: 'Title from config'
+    };
+
+    //this.dialog.open(PopUpFormComponent, dialogConfig);
+
+    const dialogRef = this.dialog.open(PopUpFormComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      data => console.log("Dialog output:", data)
+    );
+  }
+
 }
