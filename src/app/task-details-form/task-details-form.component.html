@@ -1,0 +1,24 @@
+<div class="container">
+
+<!--  <h2 mat-dialog-title></h2>-->
+<!--<button mat-raised-button color="accent" class="edit" id="edit-button"> Edit </button>-->
+
+  <button mat-raised-button color="primary" class=edit (click)="editClick()" > {{action}}</button>
+
+ <!--[formGroup]="form"-->
+    <div class="content">
+      <p id="edit" class="title" *ngIf="task">
+          Tytuł {{task.title}}
+      </p>
+      <div class="description" *ngIf="task">
+        Descr {{task.description}}
+      </div>
+   </div>
+
+
+  <mat-dialog-actions class="mat-dialog-actions">
+    <button mat-raised-button color="primary" id="end-editing" (click)="close()">Close</button>
+<!--    <button mat-raised-button color="accent" (click)="saveTask()">Save</button>-->
+  </mat-dialog-actions>
+
+</div>

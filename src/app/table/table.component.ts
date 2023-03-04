@@ -3,7 +3,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 import { Task } from "../task";
 import {TaskService} from "../sevices/task.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {PopUpFormComponent} from "../pop-up-form/pop-up-form.component";
+import {TaskDetailsFormComponent} from "../task-details-form/task-details-form.component";
 
 @Component({
   selector: 'app-table',
@@ -37,6 +37,7 @@ export class TableComponent  implements OnInit{
   }
 
 
+
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -65,7 +66,8 @@ export class TableComponent  implements OnInit{
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-
+    dialogConfig.minHeight = 400;
+    dialogConfig.minWidth = 300;
     dialogConfig.data = {
       id: 1,
       title: 'Title from config'
@@ -73,7 +75,7 @@ export class TableComponent  implements OnInit{
 
     //this.dialog.open(PopUpFormComponent, dialogConfig);
 
-    const dialogRef = this.dialog.open(PopUpFormComponent, dialogConfig);
+    const dialogRef = this.dialog.open(TaskDetailsFormComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
       data => console.log("Dialog output:", data)

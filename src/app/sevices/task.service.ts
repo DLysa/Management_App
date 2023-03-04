@@ -18,4 +18,10 @@ private  baseUrl = "http://localhost:8080/api/";
   addTask(data: any): Observable<any>{
     return this.http.post(`${this.baseUrl}addTask`,data);
   }
+
+  getTask(id: any): Observable<any> {
+    return this.http.get(`${this.baseUrl}showTask/${id}`);
+  }
+
+
 }

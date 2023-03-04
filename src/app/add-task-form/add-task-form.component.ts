@@ -3,15 +3,14 @@ import {MatDialogRef} from "@angular/material/dialog";
 
 import {Task} from "../task";
 import {TaskService} from "../sevices/task.service";
-import {TableComponent} from "../table/table.component";
 
 
 @Component({
-  selector: 'app-pop-up-form',
-  templateUrl: './pop-up-form.component.html',
-  styleUrls: ['./pop-up-form.component.css']
+  selector: 'app-add-task-form',
+  templateUrl: './add-task-form.html',
+  styleUrls: ['./add-task-form.component.css']
 })
-export class PopUpFormComponent implements OnInit {
+export class AddTaskFormComponent implements OnInit {
 
 
   newTask: Task = {
@@ -48,7 +47,7 @@ export class PopUpFormComponent implements OnInit {
 */
 
   constructor(private taskService: TaskService,
-              private dialogRef: MatDialogRef<PopUpFormComponent>,) { }
+              private dialogRef: MatDialogRef<AddTaskFormComponent>,) { }
 
   ngOnInit(): void {
   }
@@ -67,7 +66,7 @@ export class PopUpFormComponent implements OnInit {
         },
          error: (e) => console.error(e)
       });
-    TableComponent.refresh();
+    //TableComponent.refresh();
     this.dialogRef.close();
 
   }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
-import { PopUpFormComponent } from "../pop-up-form/pop-up-form.component";
+import { AddTaskFormComponent } from "../add-task-form/add-task-form.component";
 
 @Component({
   selector: 'app-show-pop-up-form',
@@ -25,7 +25,7 @@ export class ShowPopUpFormComponent {
 
     //this.dialog.open(PopUpFormComponent, dialogConfig);
 
-    const dialogRef = this.dialog.open(PopUpFormComponent, dialogConfig);
+    const dialogRef = this.dialog.open(AddTaskFormComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
       data => console.log("Dialog output:", data)

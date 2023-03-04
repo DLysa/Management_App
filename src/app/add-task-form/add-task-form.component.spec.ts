@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopUpFormComponent } from './pop-up-form.component';
+import { AddTaskFormComponent } from './add-task-form.component';
 
 describe('PopUpFormComponent', () => {
-  let component: PopUpFormComponent;
-  let fixture: ComponentFixture<PopUpFormComponent>;
+  let component: AddTaskFormComponent;
+  let fixture: ComponentFixture<AddTaskFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PopUpFormComponent ]
+      declarations: [ AddTaskFormComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PopUpFormComponent);
+    fixture = TestBed.createComponent(AddTaskFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
