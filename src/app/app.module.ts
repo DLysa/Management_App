@@ -56,7 +56,7 @@ import { TaskDetailsFormComponent } from './task-details-form/task-details-form.
     ReactiveFormsModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [TableComponent],
   bootstrap: [AppComponent],
   entryComponents: [AddTaskFormComponent]
 })

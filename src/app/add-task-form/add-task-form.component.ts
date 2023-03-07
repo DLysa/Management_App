@@ -19,32 +19,6 @@ export class AddTaskFormComponent implements OnInit {
     description: ''
   };
 
-  /*
-  form: FormGroup;
-  title: string ;
-  description: string;
-*//*
-  constructor(
-    private fb: FormBuilder,
-    private dialogRef: MatDialogRef<PopUpFormComponent>,
-    private taskService: TaskService,
-    @Inject(MAT_DIALOG_DATA) data:any) {
-
-    this.description = data.description;
-  }
-
-  ngOnInit(): void {
-
-    this.form = this.fb.group({
-      title: [this.title,[]],
-      description: [this.description, []],
-
-    });
-  }
-  save() {
-    this.dialogRef.close(this.form.value);
-  }
-*/
 
   constructor(private taskService: TaskService,
               private dialogRef: MatDialogRef<AddTaskFormComponent>,) { }

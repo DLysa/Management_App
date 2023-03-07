@@ -5,17 +5,26 @@
 }
 
 .title{
-  font-size: 20px;
+  font-size: 22px;
   position: center;
   font-weight: bold;
-
+  padding-bottom: 20px;
 }
+
 .description{
-  font-size: 16px;
-  margin-top: 20px;
+  font-size: 17px;
+  line-height: 20px;
 }
 
-.edit{
+.description-field-label{
+  font-weight: bold;
+}
+
+.description-label{
+  font-size: 13px;
+  padding-bottom: 5px;
+}
+.edit-btn{
   position:  absolute;
   right: 5px;
   top: 5px;
