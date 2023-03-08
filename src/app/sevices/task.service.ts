@@ -9,6 +9,7 @@ import { Task } from "../task";
 export class TaskService {
 private  baseUrl = "http://localhost:8080/api/";
 
+
   constructor(private http: HttpClient) { }
 
   getTasks(): Observable<Task[]>{
@@ -22,6 +23,5 @@ private  baseUrl = "http://localhost:8080/api/";
   getTask(id: any): Observable<any> {
     return this.http.get(`${this.baseUrl}showTask/${id}`);
   }
-
 
 }

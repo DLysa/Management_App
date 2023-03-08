@@ -1,6 +1,7 @@
 <div cdkDropListGroup>
   <h1>Project name</h1>
   <app-show-pop-up-form></app-show-pop-up-form>
+
   <div class="container">
     <h2>Do zrobienia</h2>
 
@@ -10,7 +11,7 @@
       class="list"
       (cdkDropListDropped)="drop($event)">
 
-<div class="box"  *ngFor="let task of tasks" (click)="openDialog(task)" cdkDrag>
+<div  class="box"  *ngFor="let task of tasks"  (click)="openDialog(task)"  cdkDrag>
         {{task.title}}
   <!--      <div class="box"  *ngFor="let taskTitle of taskTitles" (click)="openDialog(taskTitle)" cdkDrag>-->
 <!--        {{taskTitle}}-->
@@ -49,8 +50,8 @@
       <div class="box" *ngFor="let item of done1" cdkDrag>{{item}}</div>
     </div>
   </div>-->
-</div>
 
+</div>
 
 <!-- Copyright 2023 Google LLC. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that

@@ -4,6 +4,7 @@ import { Task } from "../task";
 import {TaskService} from "../sevices/task.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {TaskDetailsFormComponent} from "../task-details-form/task-details-form.component";
+import {Store} from "../store/store";
 
 @Component({
   selector: 'app-table',
@@ -22,10 +23,8 @@ export class TableComponent implements OnInit{
 
   task: Task;
 
-  constructor(private taskService: TaskService,private dialog: MatDialog) {
+  constructor(private taskService: TaskService, private store: Store, private dialog: MatDialog) {
   }
-  taskTitles:string[];
-  //clickedTask: Task | undefined;
 
   ngOnInit():void {
     this.refresh()
@@ -35,13 +34,8 @@ export class TableComponent implements OnInit{
     this.taskService.getTasks().subscribe((data:Task[]) =>{
       console.log(data);
       this.tasks=data;
-      //this.taskTitles = this.tasks.map((a: { title: string }) => a.title);
-
-    //  console.log(this.taskTitles);
     })
   }
-
-
 
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
@@ -56,42 +50,25 @@ export class TableComponent implements OnInit{
     }
   }
 
-/*
-  static refresh(this: any){
-    this.taskService.getTasks().subscribe((data:Task[]) =>{
-      console.log(data);
-      this.tasks=data;
-      this.taskTitles = this.tasks.map((a: { title: any; }) => a.title);
-      console.log(this.taskTitles);
-    })
-  }
-*/
+  openDialog(selectedTask:Task) {
+    this.store.selectedTask = selectedTask;
 
-  openDialog(taskFromOpening:Task) {
-    //let taskArg: Task = task;
-    this.task=taskFromOpening;
-
-
-    // this.clickedTask= this.tasks.find(i => i.title === taskTitle);
     const dialogConfig = new MatDialogConfig();
-   // console.log(this.taskTitles)
-    //console.log(taskTitle)
+
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.minHeight = 400;
-
     dialogConfig.minWidth = 300;
 
+    console.log(selectedTask);
 
-    console.log(this.task);
-    console.log(taskFromOpening);
+    //const dialogRef =
+      this.dialog.open(TaskDetailsFormComponent, dialogConfig);
 
-
-    const dialogRef = this.dialog.open(TaskDetailsFormComponent, dialogConfig);
-
+/*
     dialogRef.afterClosed().subscribe(
       data => console.log("Dialog output:", data)
-    );
+    );*/
 
   }
 

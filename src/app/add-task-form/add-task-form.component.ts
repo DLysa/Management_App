@@ -12,13 +12,11 @@ import {TaskService} from "../sevices/task.service";
 })
 export class AddTaskFormComponent implements OnInit {
 
-
   newTask: Task = {
     id : 1,
     title: '',
     description: ''
   };
-
 
   constructor(private taskService: TaskService,
               private dialogRef: MatDialogRef<AddTaskFormComponent>,) { }

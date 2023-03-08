@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Task} from "../task";
 import {TaskService} from "../sevices/task.service";
 import {MatDialogRef} from "@angular/material/dialog";
-import {TableComponent} from "../table/table.component";
+import {Store} from "../store/store";
 
 @Component({
   selector: 'app-task-details-form',
@@ -12,48 +12,23 @@ import {TableComponent} from "../table/table.component";
 export class TaskDetailsFormComponent implements OnInit {
 
   action: string = 'Edit';
-
-  /*task: Task = {
-    id : 1,
-    title: '',
-    description: ''
-  };*/
-
-  task: Task;
-  editable: any;
-
+  selectedTask: Task;
 
   constructor(private taskService: TaskService,
-              private table:TableComponent,
-              private dialogRef: MatDialogRef<TaskDetailsFormComponent>,) { }
+              private store: Store,
+              private dialogRef: MatDialogRef<TaskDetailsFormComponent>,) {
+
+    this.selectedTask = store.selectedTask;
+  }
 
   ngOnInit(): void {
-    //this.refresh();
 
-   // console.log(this.task)
-    console.log(this.task);
-    console.log(this.table.task)
-   this.task = this.table.task
-    console.log(this.task)
-    this.taskService.getTask(this.task.id).subscribe((data: Task) => {
+    console.log(this.selectedTask)
+    this.taskService.getTask(this.selectedTask.id).subscribe((data: Task) => {
       // console.log(data);
-      this.task = data;
-
+      this.selectedTask = data;
     });
   }
-/*
-  refresh() {
-    console.log(this.task)
-    task: Task = this.table.task
-    this.taskService.getTask(this.task.id).subscribe((data: Task) => {
-     // console.log(data);
-      this.task = data;
-      //console.log(this.task);
-
-      //console.log(this.clickedTask)
-    });
-  }*/
-
 
   editClick() {
 
@@ -63,16 +38,14 @@ export class TaskDetailsFormComponent implements OnInit {
     } else {
       this.action = 'Edit';
       this.saveTask();
-
     }
   }
 
-
   saveTask(): void {
     const data = {
-      id: this.task.id,
-      title: this.task.title,
-      description: this.task.description
+      id: this.selectedTask.id,
+      title: this.selectedTask.title,
+      description: this.selectedTask.description
     };
 
     this.taskService.addTask(data)
@@ -87,6 +60,7 @@ export class TaskDetailsFormComponent implements OnInit {
 
   }
   close() {
+    //przekazywanie zmian dla lepszego odswiezania?
     this.dialogRef.close();
   }
 

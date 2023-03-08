@@ -1,43 +1,33 @@
 <div class="container">
-
 <!--  <h2 mat-dialog-title></h2>-->
-
-  <button mat-raised-button color="primary" class=edit-btn (click)="editClick()" > {{action}}</button>
-
+  <button mat-raised-button color="primary" class=edit-btn (click)="editClick()"  > {{action}}</button>
 
   <div class="content">
 
-
     <div *ngIf="action!='Edit'; else elseBlock">
-      <mat-form-field appearance="outline">
-        <input matInput appearance="outline" class="title-field" type="text" value="{{task.title}}"><br>
+      <mat-form-field appearance="outline" >
+        <input matInput class="title-field" type="text" [(ngModel)]="selectedTask.title" value="{{selectedTask.title}}"><br>
       </mat-form-field>
       <br>
       <mat-form-field appearance="outline">
         <mat-label class="description-field-label">Description:</mat-label>
-        <input matInput appearance="outline" class="description" type="text" value="{{task.description}}">
-
+        <input matInput class="description" type="text" [(ngModel)]="selectedTask.description" value="{{selectedTask.description}}">
       </mat-form-field>
     </div>
 
     <ng-template #elseBlock>
       <div class="title">
-        {{task.title}}
+        {{selectedTask.title}}
       </div>
 
       <div class="description">
         <label class="description-label">Description:</label> <br>
-        {{task.description}}
+        {{selectedTask.description}}
       </div>
     </ng-template>
-
-
   </div>
-
 
   <mat-dialog-actions class="mat-dialog-actions">
     <button mat-raised-button color="primary" id="end-editing" (click)="close()">Close</button>
-    <button mat-raised-button color="accent" (click)="saveTask()">Save</button>
   </mat-dialog-actions>
-
 </div>
