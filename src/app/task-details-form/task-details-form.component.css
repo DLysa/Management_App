@@ -18,7 +18,7 @@
 
 }
 
-.description{
+.description-input{
   font-size: 17px;
   line-height: 20px;
 }
@@ -32,7 +32,7 @@
   padding-bottom: 5px;
 }
 .edit-btn{
-
+ position: absolute;
   right: 5px;
   top: 5px;
   margin: 20px;
@@ -42,6 +42,10 @@
   bottom: 15px;
   left: 15px;
 }
-.btn-edit{
-  color : red;
+
+#delete-btn{
+  position: absolute;
+  right: 5px;
+  top: 55px;
+  margin: 20px;
 }

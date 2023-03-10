@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import { Task } from "../task";
+import {Status} from "../status";
 
 @Injectable({
   providedIn: 'root'
@@ -24,4 +25,15 @@ private  baseUrl = "http://localhost:8080/api/";
     return this.http.get(`${this.baseUrl}showTask/${id}`);
   }
 
+  deleteTask(id: any): Observable<any> {
+    return this.http.delete(`${(this.baseUrl)}deleteTask/${id}`);
+  }
+
+  getAllStatus(): Observable<Status[]>{
+    return this.http.get<Status[]>(`${this.baseUrl}showAllStatus`);
+  }
+
+  addStatus(data: any): Observable<any>{
+    return this.http.post(`${this.baseUrl}addStatus`,data);
+  }
 }

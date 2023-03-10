@@ -5,6 +5,7 @@ import {TaskService} from "../sevices/task.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {TaskDetailsFormComponent} from "../task-details-form/task-details-form.component";
 import {Store} from "../store/store";
+import {Status} from "../status";
 
 @Component({
   selector: 'app-table',
@@ -13,15 +14,9 @@ import {Store} from "../store/store";
 })
 export class TableComponent implements OnInit{
 
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-
- done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
-
-  done1 = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
-
   tasks: Task[];
-
   task: Task;
+  statusType: Status[];
 
   constructor(private taskService: TaskService, private store: Store, private dialog: MatDialog) {
   }
@@ -34,6 +29,13 @@ export class TableComponent implements OnInit{
     this.taskService.getTasks().subscribe((data:Task[]) =>{
       console.log(data);
       this.tasks=data;
+    })
+
+    this.taskService.getAllStatus().subscribe((data:Status[]) =>{
+      console.log(data);
+      this.statusType=data;
+
+      this.store.statusType = data;
     })
   }
 

@@ -1,6 +1,7 @@
 <div class="container">
 <!--  <h2 mat-dialog-title></h2>-->
   <button mat-raised-button color="primary" class=edit-btn (click)="editClick()"  > {{action}}</button>
+  <button mat-raised-button color="accent" id="delete-btn" (click)="areUSure()"> Delete</button>
 
   <div class="content">
 
@@ -11,7 +12,16 @@
       <br>
       <mat-form-field appearance="outline">
         <mat-label class="description-field-label">Description:</mat-label>
-        <input matInput class="description" type="text" [(ngModel)]="selectedTask.description" value="{{selectedTask.description}}">
+        <input matInput class="description-input" type="text" [(ngModel)]="selectedTask.description" value="{{selectedTask.description}}">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-label class="status-field-label">Status:</mat-label>
+        <mat-select class="status-input" type="text" [(ngModel)]="selectedTask.status" value="{{selectedTask.status}}">
+          <mat-option *ngFor="let status of statusType" [value]="status.name">
+          {{status.name}}
+          </mat-option>-
+        </mat-select>
       </mat-form-field>
     </div>
 
@@ -24,10 +34,15 @@
         <label class="description-label">Description:</label> <br>
         {{selectedTask.description}}
       </div>
+      <div class="status">
+        <label class="status-label">Status:</label> <br>
+        {{selectedTask.status}}
+      </div>
+
     </ng-template>
   </div>
 
   <mat-dialog-actions class="mat-dialog-actions">
-    <button mat-raised-button color="primary" id="end-editing" (click)="close()">Close</button>
+    <button mat-raised-button color="primary" id="close" (click)="close()">Close</button>
   </mat-dialog-actions>
 </div>

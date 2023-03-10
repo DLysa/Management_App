@@ -2,15 +2,18 @@
   <h1>Project name</h1>
   <app-show-pop-up-form></app-show-pop-up-form>
 
-  <div class="container">
-    <h2>Do zrobienia</h2>
+  <div class="container" *ngFor="let status of statusType">
+    <h2>{{status.name}}</h2>
 
     <div
+
       cdkDropList
       [cdkDropListData]="tasks"
       class="list"
-      (cdkDropListDropped)="drop($event)">
+      (cdkDropListDropped)="drop($event)"
 
+     >
+    <div>
 <div  class="box"  *ngFor="let task of tasks"  (click)="openDialog(task)"  cdkDrag>
         {{task.title}}
   <!--      <div class="box"  *ngFor="let taskTitle of taskTitles" (click)="openDialog(taskTitle)" cdkDrag>-->
@@ -23,33 +26,10 @@
           </svg>
         </div>
       </div>
+      </div>
+      </div>
 
-    </div>
   </div>
-<!--
-  <div class="container">
-    <h2>Gotowe</h2>
-
-    <div
-      cdkDropList
-      [cdkDropListData]="done"
-      class="list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-    </div>
-  </div>
-
-  <div class="container">
-    <h2>Gotowe1</h2>
-
-    <div
-      cdkDropList
-      [cdkDropListData]="done1"
-      class="list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="box" *ngFor="let item of done1" cdkDrag>{{item}}</div>
-    </div>
-  </div>-->
 
 </div>
 

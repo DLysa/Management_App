@@ -1,7 +1,6 @@
 export class Task {
   id?: number;
   title: string;
-  description: string;
-  //status: StatusType;
-
+  description?: string;
+  status: string;
 }

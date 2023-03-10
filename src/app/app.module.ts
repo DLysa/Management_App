@@ -23,7 +23,10 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { ShowPopUpFormComponent } from './show-pop-up-form/show-pop-up-form.component';
-import { TaskDetailsFormComponent } from './task-details-form/task-details-form.component';
+import {TaskDetailsFormComponent} from './task-details-form/task-details-form.component';
+import {MatSelectModule} from "@angular/material/select";
+import { AddStatusFormComponent } from './add-status-form/add-status-form.component';
+import { AreUSureComponent } from './are-u-sure/are-u-sure.component';
 
 
 @NgModule({
@@ -36,26 +39,30 @@ import { TaskDetailsFormComponent } from './task-details-form/task-details-form.
     AddTaskFormComponent,
     ShowPopUpFormComponent,
     TaskDetailsFormComponent,
+    AddStatusFormComponent,
+    AreUSureComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatSidenavModule,
-    LayoutModule,
-    MatButtonModule,
-    MatListModule,
-    CdkDropList,
-    DragDropModule,
-    HttpClientModule,
-    FormsModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatInputModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatSidenavModule,
+        LayoutModule,
+        MatButtonModule,
+        MatListModule,
+        CdkDropList,
+        DragDropModule,
+        HttpClientModule,
+        FormsModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatSelectModule,
+
+    ],
   providers: [TableComponent],
   bootstrap: [AppComponent],
   entryComponents: [AddTaskFormComponent]

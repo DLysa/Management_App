@@ -15,7 +15,8 @@ export class AddTaskFormComponent implements OnInit {
   newTask: Task = {
     id : 1,
     title: '',
-    description: ''
+    description: '',
+    status:''
   };
 
   constructor(private taskService: TaskService,
