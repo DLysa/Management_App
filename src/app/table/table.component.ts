@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { Task } from "../task";
 import {TaskService} from "../sevices/task.service";
@@ -12,7 +12,9 @@ import {Status} from "../status";
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit{
+export class TableComponent implements OnInit/*, AfterViewInit*/{
+
+  @ViewChild('cdk-drop-list-1') ass: ElementRef;
 
   tasks: Task[];
   task: Task;
@@ -20,6 +22,10 @@ export class TableComponent implements OnInit{
 
   constructor(private taskService: TaskService, private store: Store, private dialog: MatDialog) {
   }
+/*
+  ngAfterViewInit(): void {
+    console.log(this.ass.);
+  }*/
 
   ngOnInit():void {
     this.refresh()
@@ -40,15 +46,47 @@ export class TableComponent implements OnInit{
   }
 
   drop(event: CdkDragDrop<Task[]>) {
+    function changeStatus() {
+/*
+        const data = {
+          id: this.newTask.id,
+          title: this.newTask.title,
+          description: this.newTask.description,
+          status:"UNIT_TESTS"
+        };
+
+        this.taskService.addTask(data)
+          .subscribe({
+            next: (res) => {
+              console.log(res);
+            },
+            error: (e) => console.error(e)
+          });
+
+*/
+
+
+    }
+
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      console.log(event.container)
     } else {
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex,
+
+       // changeStatus()
       );
+
+      console.log(event.container.id)
+
+      //send api to change
+      //data taska  status: status taska kontenera
+
+
     }
   }
 

@@ -29,7 +29,8 @@ export class AddTaskFormComponent implements OnInit {
     const data = {
       id: this.newTask.id,
       title: this.newTask.title,
-      description: this.newTask.description
+      description: this.newTask.description,
+      status:"UNIT_TESTS"
     };
 
     this.taskService.addTask(data)
