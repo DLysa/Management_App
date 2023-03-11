@@ -1,0 +1,17 @@
+<div class="container">
+<h2 mat-dialog-title>Select status to delete</h2>
+
+  <mat-form-field  id="status" appearance="outline">
+    <mat-label class="status-field-label">Status:</mat-label>
+    <mat-select  appearance="outline" id="status-select" type="text" [(value)]=selectedStatus >
+      <mat-option *ngFor="let status of statusTypes" value="{{status.id}}">
+        {{status.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p>You selected: {{selectedStatus}}</p>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()" >Cancel</button>
+  <button mat-button color="warn" (click)="deleteStatus(selectedStatus)"> Delete </button>
+</mat-dialog-actions>
+</div>

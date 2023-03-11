@@ -27,6 +27,9 @@ import {TaskDetailsFormComponent} from './task-details-form/task-details-form.co
 import {MatSelectModule} from "@angular/material/select";
 import { AddStatusFormComponent } from './add-status-form/add-status-form.component';
 import { AreUSureComponent } from './are-u-sure/are-u-sure.component';
+import { OptionsListComponent } from './options-list/options-list.component';
+import {MatMenuModule} from "@angular/material/menu";
+import { ConfirmationDeleteStatusComponent } from './confirmation-delete-status/confirmation-delete-status.component';
 
 
 @NgModule({
@@ -41,28 +44,31 @@ import { AreUSureComponent } from './are-u-sure/are-u-sure.component';
     TaskDetailsFormComponent,
     AddStatusFormComponent,
     AreUSureComponent,
+    OptionsListComponent,
+    ConfirmationDeleteStatusComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatSidenavModule,
-        LayoutModule,
-        MatButtonModule,
-        MatListModule,
-        CdkDropList,
-        DragDropModule,
-        HttpClientModule,
-        FormsModule,
-        MatDialogModule,
-        MatFormFieldModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatSelectModule,
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    LayoutModule,
+    MatButtonModule,
+    MatListModule,
+    CdkDropList,
+    DragDropModule,
+    HttpClientModule,
+    FormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatMenuModule,
 
-    ],
+  ],
   providers: [TableComponent],
   bootstrap: [AppComponent],
   entryComponents: [AddTaskFormComponent]

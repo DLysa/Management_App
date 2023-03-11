@@ -30,6 +30,14 @@ export class AreUSureComponent {
         },
         error: (e) => console.error(e)
       });
+    this.close()
+  }
+
+
+
+
+  close() {
+    //przekazywanie zmian dla lepszego odswiezania?
     this.dialogRef.close();
   }
 
