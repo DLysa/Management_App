@@ -30,6 +30,10 @@ import { AreUSureComponent } from './are-u-sure/are-u-sure.component';
 import { OptionsListComponent } from './options-list/options-list.component';
 import {MatMenuModule} from "@angular/material/menu";
 import { ConfirmationDeleteStatusComponent } from './confirmation-delete-status/confirmation-delete-status.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+//import {AuthServiceService} from "./auth-service.service";
+import {AuthService} from "./auth-services/auth.service";
 
 
 @NgModule({
@@ -46,6 +50,8 @@ import { ConfirmationDeleteStatusComponent } from './confirmation-delete-status/
     AreUSureComponent,
     OptionsListComponent,
     ConfirmationDeleteStatusComponent,
+    LoginComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +75,7 @@ import { ConfirmationDeleteStatusComponent } from './confirmation-delete-status/
     MatMenuModule,
 
   ],
-  providers: [TableComponent],
+  providers: [TableComponent,AuthService],
   bootstrap: [AppComponent],
   entryComponents: [AddTaskFormComponent]
 })

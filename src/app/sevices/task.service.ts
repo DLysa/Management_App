@@ -10,7 +10,6 @@ import {Status} from "../status";
 export class TaskService {
 private  baseUrl = "http://localhost:8080/api/";
 
-
   constructor(private http: HttpClient) { }
 
   getTasks(): Observable<Task[]>{
