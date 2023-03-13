@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import { Task } from "../task";
-import {Status} from "../status";
+import { Task } from "../../task";
+import {Status} from "../../status";
+import {User} from "../../user";
+import {Comment} from "@angular/compiler";
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +31,8 @@ private  baseUrl = "http://localhost:8080/api/";
     return this.http.delete(`${(this.baseUrl)}deleteTask/${id}`);
   }
 
+
+
   getAllStatus(): Observable<Status[]>{
     return this.http.get<Status[]>(`${this.baseUrl}showAllStatus`);
   }
@@ -39,5 +43,23 @@ private  baseUrl = "http://localhost:8080/api/";
 
   deleteStatus(id: any): Observable<any> {
     return this.http.delete(`${(this.baseUrl)}deleteStatus/${id}`);
+  }
+
+
+
+  getAllUsers(): Observable<User[]>{
+    return this.http.get<User[]>(`${this.baseUrl}showAllUsers`);
+  }
+
+  addUser(data: any): Observable<any>{
+    return this.http.post(`${this.baseUrl}addUser`,data);
+  }
+
+  getAllComments(): Observable<Comment[]>{
+    return this.http.get<Comment[]>(`${this.baseUrl}showAllComments`);
+  }
+
+  addComment(data: any): Observable<any>{
+    return this.http.post(`${this.baseUrl}addComment`,data);
   }
 }

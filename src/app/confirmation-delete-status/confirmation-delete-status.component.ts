@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {Store} from "../store/store";
-import {TaskService} from "../sevices/task.service";
+import {TaskService} from "../services/sevices/task.service";
 import {MatDialogRef} from "@angular/material/dialog";
 import {TaskDetailsFormComponent} from "../task-details-form/task-details-form.component";
 import {Status} from "../status";

@@ -30,6 +30,7 @@ import { AreUSureComponent } from './are-u-sure/are-u-sure.component';
 import { OptionsListComponent } from './options-list/options-list.component';
 import {MatMenuModule} from "@angular/material/menu";
 import { ConfirmationDeleteStatusComponent } from './confirmation-delete-status/confirmation-delete-status.component';
+import { CommentsComponent } from './comments/comments.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { ConfirmationDeleteStatusComponent } from './confirmation-delete-status/
     AreUSureComponent,
     OptionsListComponent,
     ConfirmationDeleteStatusComponent,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { Task } from "../task";
-import {TaskService} from "../sevices/task.service";
+import {TaskService} from "../services/sevices/task.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {TaskDetailsFormComponent} from "../task-details-form/task-details-form.component";
 import {Store} from "../store/store";
