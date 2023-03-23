@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TaskService} from "../sevices/task.service";
+import {TaskService} from "../services/sevices/task.service";
 import {Store} from "../store/store";
 import {MatDialog, MatDialogConfig, MatDialogRef} from "@angular/material/dialog";
 import {Task} from "../task";

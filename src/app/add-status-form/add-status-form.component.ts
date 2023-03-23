@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
 
 import {Status} from "../status";
-import {TaskService} from "../sevices/task.service";
+import {TaskService} from "../services/sevices/task.service";
 
 @Component({
   selector: 'app-add-status-form',
