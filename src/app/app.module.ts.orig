@@ -30,11 +30,14 @@ import { AreUSureComponent } from './are-u-sure/are-u-sure.component';
 import { OptionsListComponent } from './options-list/options-list.component';
 import {MatMenuModule} from "@angular/material/menu";
 import { ConfirmationDeleteStatusComponent } from './confirmation-delete-status/confirmation-delete-status.component';
-
+<<<<<<< HEAD
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+//import {AuthServiceService} from "./auth-service.service";
 import {AuthService} from "./auth-services/auth.service";
+=======
 import { CommentsComponent } from './comments/comments.component';
+>>>>>>> withoutLogin
 
 
 @NgModule({
@@ -51,9 +54,12 @@ import { CommentsComponent } from './comments/comments.component';
     AreUSureComponent,
     OptionsListComponent,
     ConfirmationDeleteStatusComponent,
+<<<<<<< HEAD
     LoginComponent,
     HomeComponent,
+=======
     CommentsComponent,
+>>>>>>> withoutLogin
   ],
   imports: [
     BrowserModule,
