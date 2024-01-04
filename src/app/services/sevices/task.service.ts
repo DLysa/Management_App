@@ -46,19 +46,6 @@ private  baseUrl = "http://localhost:8080/api/";
 
 
 
-  getAllUsers(): Observable<User[]>{
-    return this.http.get<User[]>(`${this.baseUrl}showAllUsers`);
-  }
 
-  addUser(data: any): Observable<any>{
-    return this.http.post(`${this.baseUrl}addUser`,data);
-  }
 
-  getAllComments(): Observable<Comment[]>{
-    return this.http.get<Comment[]>(`${this.baseUrl}showAllComments`);
-  }
-
-  addComment(data: any): Observable<any>{
-    return this.http.post(`${this.baseUrl}addComment`,data);
-  }
 }

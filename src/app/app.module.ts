@@ -35,6 +35,8 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import {AuthService} from "./auth-services/auth.service";
 import { CommentsComponent } from './comments/comments.component';
+import { ConfirmationResetStatusComponent } from './confirmation-default-status/confirmation-reset-status.component';
+import { ProjectSettingsComponent } from './project-settings/project-settings.component';
 
 
 @NgModule({
@@ -54,6 +56,8 @@ import { CommentsComponent } from './comments/comments.component';
     LoginComponent,
     HomeComponent,
     CommentsComponent,
+    ConfirmationResetStatusComponent,
+    ProjectSettingsComponent,
   ],
   imports: [
     BrowserModule,

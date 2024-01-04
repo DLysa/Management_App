@@ -1,12 +1,14 @@
 .content{
-   margin-left: 20px;
+  width: fit-content;
+  min-width: 420px;
+  margin-left: 20px;
   margin-top: 30px;
   line-height: 35px;
 }
 
 .title{
+  margin-right: 100px;
   font-size: 22px;
-  position: center;
   font-weight: bold;
   padding-bottom: 20px;
 }
@@ -31,7 +33,7 @@
   font-size: 13px;
   padding-bottom: 5px;
 }
-.edit-btn{
+#edit-btn{
  position: absolute;
   right: 5px;
   top: 5px;
@@ -48,4 +50,13 @@
   right: 5px;
   top: 55px;
   margin: 20px;
+}
+
+#inprogress{
+  position: absolute;
+  right:5px;
+  top:105px;
+  margin:20px;
+  color:orange;
+  font-weight: bold;
 }

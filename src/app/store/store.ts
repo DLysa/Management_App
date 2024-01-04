@@ -8,4 +8,5 @@ import {Status} from "../status";
 export class Store {
   selectedTask : Task ;
   statusType : Status[];
+  orderStatus : Status[];
 }

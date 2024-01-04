@@ -4,6 +4,8 @@ import {AddStatusFormComponent} from "../add-status-form/add-status-form.compone
 import {AreUSureComponent} from "../are-u-sure/are-u-sure.component";
 import {ConfirmationDeleteStatusComponent} from "../confirmation-delete-status/confirmation-delete-status.component";
 import {TaskDetailsFormComponent} from "../task-details-form/task-details-form.component";
+import {ConfirmationResetStatusComponent} from "../confirmation-default-status/confirmation-reset-status.component";
+import {ProjectSettingsComponent} from "../project-settings/project-settings.component";
 
 @Component({
   selector: 'app-options-list',
@@ -13,7 +15,7 @@ import {TaskDetailsFormComponent} from "../task-details-form/task-details-form.c
 export class OptionsListComponent {
 
   constructor(private dialog: MatDialog
-              ) {
+  ) {
   }
 
   public openDialogStatus() {
@@ -28,5 +30,13 @@ export class OptionsListComponent {
 
   areUSure() {
     this.dialog.open(ConfirmationDeleteStatusComponent);
+
+  }
+
+  resetStatus() {
+    this.dialog.open(ConfirmationResetStatusComponent);
+  }
+  projectSettings() {
+    this.dialog.open(ProjectSettingsComponent);
   }
 }

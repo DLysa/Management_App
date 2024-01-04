@@ -14,6 +14,7 @@ import {AreUSureComponent} from "../are-u-sure/are-u-sure.component";
 export class TaskDetailsFormComponent implements OnInit {
 
   action: string = 'Edit';
+  activity: string = 'WAITING';
   selectedTask: Task;
   statusType: Status[];
   constructor(private taskService: TaskService,
@@ -39,10 +40,18 @@ export class TaskDetailsFormComponent implements OnInit {
 
     if (this.action == 'Edit') {
       this.action = 'Save';
-
     } else {
       this.action = 'Edit';
       this.saveTask();
+    }
+  }
+
+  activityChange() {
+
+    if (this.activity == 'WAITING') {
+      this.activity = 'IN PROGRESS';
+    } else {
+      this.activity = 'WAITING';
     }
   }
 
