@@ -1,6 +1,6 @@
 .content{
   width: fit-content;
-  min-width: 420px;
+  min-width: 600px;
   margin-left: 20px;
   margin-top: 30px;
   line-height: 35px;
@@ -40,9 +40,8 @@
   margin: 20px;
 }
 .mat-dialog-actions {
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
+  position: static;
+  margin: 2%;
 }
 
 #delete-btn{

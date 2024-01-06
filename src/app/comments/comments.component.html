@@ -1,11 +1,28 @@
+
+<button mat-raised-button color="primary" id=add-comment-btn *ngIf="!isInputVisible" (click)="toggleInput()">Add comment</button>
+<mat-form-field id=add-comment-input *ngIf="isInputVisible" appearance="outline" >
+<input matInput placeholder="Comment"  [(ngModel)]="commentText" value="{{commentText}}">
+</mat-form-field>
+<div id="input-button">
+<button mat-raised-button color="accent" id=cancel *ngIf="isInputVisible" (click)="toggleInput();clearInput();">Cancel</button>
+<button mat-raised-button color="primary" id=save *ngIf="isInputVisible" (click)="toggleInput(); saveComment();clearInput()">Done</button>
+</div>
+
+
 <div class="container">
 
-  <div class="autor">
-    Dominik Łysak
-  </div> <br>
-  <div class="text">
-    Sądze iż to zadanie jest beznadziejne -> do usunięcia. Nikt tego nie będzie testować !
+<div id="background" *ngFor="let comment of comments2; index as i">
+  <div class="info-bar">
+  <div class="grid-child-element-status"> {{comments2[i].status }} </div>
+  <div class="grid-child-element-author"> {{comments2[i].authorId }}</div>
   </div>
+  <br>
+
+  <div class="text">
+    {{comments2[i].text }}
+  </div>
+  <br> <br>
+</div>
 
 
 </div>

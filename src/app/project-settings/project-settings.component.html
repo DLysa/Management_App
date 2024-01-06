@@ -8,7 +8,7 @@
     (cdkDropListDropped)="drop($event)"
   >
     <div>
-      <ng-container *ngFor="let status of orderStatus">
+      <ng-container *ngFor="let status of allStatus">
         <div  class="box" cdkDrag>
           <div>
             {{status.name}}

@@ -4,7 +4,6 @@ import {Observable} from "rxjs";
 import { Task } from "../../task";
 import {Status} from "../../status";
 import {User} from "../../user";
-import {Comment} from "@angular/compiler";
 
 @Injectable({
   providedIn: 'root'
