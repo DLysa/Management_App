@@ -3,6 +3,8 @@ import {MatDialogRef} from "@angular/material/dialog";
 
 import {Status} from "../status";
 import {TaskService} from "../services/sevices/task.service";
+import {Store} from "../store/store";
+import {LocalService} from "../local/local.service";
 
 @Component({
   selector: 'app-add-status-form',
@@ -17,14 +19,16 @@ export class AddStatusFormComponent {
   };
 
   constructor(private taskService: TaskService,
-              private dialogRef: MatDialogRef<AddStatusFormComponent>,) { }
+              private dialogRef: MatDialogRef<AddStatusFormComponent>,
+              private localStore: LocalService,
+              private store: Store) { }
 
   ngOnInit(): void {
   }
 
   saveStatus(): void {
     const data = {
-      id: this.newStatus.id,
+      id: Number(this.newStatus.id),
       name: this.newStatus.name
     };
 
@@ -35,8 +39,13 @@ export class AddStatusFormComponent {
         },
         error: (e) => console.error(e)
       });
+
+
+    this.store.orderStatus.push(data)
+    this.localStore.saveData('lastOrder',JSON.stringify(this.store.orderStatus))
+
     //TableComponent.refresh();
-    this.dialogRef.close();
+    this.dialogRef.close();//todo potrzebne?
 
   }
   close() {

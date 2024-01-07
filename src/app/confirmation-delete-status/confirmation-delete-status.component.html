@@ -1,10 +1,10 @@
 <div class="container">
 <h2 mat-dialog-title>Select status to delete</h2>
 
-  <mat-form-field  id="status" appearance="outline">
+  <mat-form-field class="select-box" appearance="outline">
     <mat-label class="status-field-label">Status:</mat-label>
-    <mat-select  appearance="outline" id="status-select" type="text" [(value)]=selectedStatus >
-      <mat-option *ngFor="let status of statusTypes" value="{{status.id}}">
+    <mat-select  appearance="outline" type="text" [(value)]=selectedStatus >
+      <mat-option  *ngFor="let status of statusTypes" value="{{status.id}}">
         {{status.name}}
       </mat-option>
     </mat-select>

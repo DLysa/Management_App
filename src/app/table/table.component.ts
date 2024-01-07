@@ -7,13 +7,14 @@ import {TaskDetailsFormComponent} from "../task-details-form/task-details-form.c
 import {Store} from "../store/store";
 import {Status} from "../status";
 import {classNames} from "@angular/cdk/schematics";
+import {LocalService} from "../local/local.service";
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit/*, AfterViewInit*/{
+export class TableComponent implements OnInit{
 
   tasks: Task[];
   task: Task;
@@ -21,12 +22,25 @@ export class TableComponent implements OnInit/*, AfterViewInit*/{
   statusType: Status[];
   i: number;
   x:number=0;
-  constructor(private taskService: TaskService, private store: Store, private dialog: MatDialog) {
+  order:string|null;
+  order2:Status[];
+  constructor(private taskService: TaskService, protected store: Store, private dialog: MatDialog, private localStore: LocalService) {
+
   }
 
   ngOnInit():void {
     this.refresh()
 
+   this.order =this.localStore.getData('lastOrder');
+    console.log("last order localstore")
+    console.log(this.order)
+    if (this.order != null) {
+      this.order2 =JSON.parse(this.order)
+     this.store.orderStatus=this.order2
+
+    }
+    console.log("init table storage oder")
+    console.log(this.store.orderStatus)
   }
 
   refresh(this: any){

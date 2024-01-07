@@ -40,8 +40,11 @@ export class AddTaskFormComponent implements OnInit {
         },
          error: (e) => console.error(e)
       });
+
+
+
     //TableComponent.refresh();
-    this.dialogRef.close();
+    this.dialogRef.close();//todo potrzebne?
 
   }
   close() {

@@ -3,12 +3,12 @@
   <h2>Sequence of columns</h2>
   <div
     cdkDropList
-    [cdkDropListData]="allStatus"
+    [cdkDropListData]="order2"
     class="list"
     (cdkDropListDropped)="drop($event)"
   >
     <div>
-      <ng-container *ngFor="let status of allStatus">
+      <ng-container *ngFor="let status of order2">
         <div  class="box" cdkDrag>
           <div>
             {{status.name}}

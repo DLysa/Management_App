@@ -35,7 +35,7 @@ private  baseUrl = "http://localhost:8080/api/";
     return this.http.get<Status[]>(`${this.baseUrl}showAllStatus`);
   }
 
-  addStatus(data: any): Observable<any>{
+  addStatus(data: Status): Observable<any>{
     return this.http.post(`${this.baseUrl}addStatus`,data);
   }
 
@@ -43,8 +43,7 @@ private  baseUrl = "http://localhost:8080/api/";
     return this.http.delete(`${(this.baseUrl)}deleteStatus/${id}`);
   }
 
-
-
+//todo wszdzie w service zaamiast any dac jakis typ np Status?
 
 
 }

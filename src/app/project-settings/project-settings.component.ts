@@ -7,6 +7,7 @@ import {MatDialog, MatDialogConfig, MatDialogRef} from "@angular/material/dialog
 import {AreUSureComponent} from "../are-u-sure/are-u-sure.component";
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 import {TaskDetailsFormComponent} from "../task-details-form/task-details-form.component";
+import {LocalService} from "../local/local.service";
 
 @Component({
   selector: 'app-project-settings',
@@ -14,6 +15,8 @@ import {TaskDetailsFormComponent} from "../task-details-form/task-details-form.c
   styleUrls: ['./project-settings.component.css']
 })
 export class ProjectSettingsComponent {
+  order:string|null;
+  order2:Status[];
   projectSettings(){
 console.log("projsettings")
   }
@@ -23,16 +26,19 @@ console.log("projsettings")
   x:number=0;
 
 
+
   action: string = 'Edit';
   selectedTask: Task;
   statusType: Status[];
   constructor(private taskService: TaskService,
-              private store: Store,
+              protected store: Store,
               public dialog: MatDialog,
-              private dialogRef: MatDialogRef<ProjectSettingsComponent>,) {
+              private dialogRef: MatDialogRef<ProjectSettingsComponent>,
+              private localStore: LocalService) {
 
     this.selectedTask = store.selectedTask;
     this.statusType = store.statusType;
+
 
   }
 
@@ -41,37 +47,22 @@ console.log("projsettings")
     this.taskService.getAllStatus().subscribe((data: Status[]) => {
        console.log("Statuses get " +data);
       this.allStatus = data;
+
     });
+    this.order =this.localStore.getData('lastOrder');
+    if (this.order != null) {
+      this.order2 =JSON.parse(this.order)
+
+
+    }
+
 
   }
 
   drop(event: CdkDragDrop<Status[]>) {
-    let  statusToChange : Status | undefined;
-    let droppedIdOfTable : number;
-    let contenerId;
 
-    if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      //console.log(event.container)
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-      contenerId = event.container.id
-      console.log("CONTENER ID :" + contenerId);
-      droppedIdOfTable = Number(contenerId.substring(event.container.id.length - 1))-this.x
-      console.log( "cutted number: "+droppedIdOfTable);
-      statusToChange = this.statusType.find(i => i.id === droppedIdOfTable+1);
-      console.log(statusToChange);
-      this.changeStatus(statusToChange!.name);
-      droppedIdOfTable += 3;
-      this.x+=3
-      console.log(this.statusType.length)
-
-    }
+      this.orderStatus=event.container.data;
   }
 
 
@@ -99,13 +90,11 @@ console.log("projsettings")
 
   }
   draging(statusDraged: Status) {
-    this.statusDraged = statusDraged;
+
   }
 
-
-
   saveColumns(){
-
+    this.localStore.saveData('lastOrder', JSON.stringify(this.orderStatus));
   }
 
 

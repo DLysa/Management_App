@@ -4,6 +4,7 @@ import {TaskService} from "../services/sevices/task.service";
 import {MatDialogRef} from "@angular/material/dialog";
 import {TaskDetailsFormComponent} from "../task-details-form/task-details-form.component";
 import {Status} from "../status";
+import {LocalService} from "../local/local.service";
 
 
 @Component({
@@ -18,10 +19,9 @@ export class ConfirmationResetStatusComponent {
   selectedStatus: Status;
   orders:Status[]=[]
 
-  defaultOrderForDefaultStatus:number[]=[0,1,2,3,4,5,6];
 
-
-  constructor( private store: Store,private taskService: TaskService,  private dialogRef: MatDialogRef<TaskDetailsFormComponent>,) {
+  constructor( private store: Store,private taskService: TaskService,  private dialogRef: MatDialogRef<TaskDetailsFormComponent>,
+               private localStore: LocalService) {
     this.statusTypes = store.statusType;
   }
 
@@ -37,7 +37,7 @@ export class ConfirmationResetStatusComponent {
           error: (e) => console.error(e)
         });
       this.dialogRef.close();
-
+      this.localStore.saveData('lastOrder', JSON.stringify(this.defaultStatusType));
     }
 
     const order = (dane: Status[], order: number[]) => {
@@ -50,28 +50,7 @@ export class ConfirmationResetStatusComponent {
       console.log(this.orders)
     }
 
-    order(this.defaultStatusType,this.defaultOrderForDefaultStatus)
-/*
-   wyswietlDaneWKolejnosci(dane: Status[],kolejnosc: number[]):void {
-      kolejnosc.forEach(index => {
-        if (index >= 0 && index < dane.length) {
-          console.log(dane[index]);
-        }
-      });
-*/
 
-
-/*
-      let z=wyswietlDaneWKolejnosci([{ id:1, name:"TO FIX"} ,{ id:2, name:"TO TESTS"},{ id:3, name:"UNIT TESTS"},{ id:4, name:"MANUAL TESTS"},{ id:5, name:"AUTOMATION TESTS"},{ id:6, name:"FUNCTIONAL TESTS"},{ id:7, name:"READY TO DEPLOY"}], [1,2,3,4,5,6,7])
-      console.log(z)*/
-/*
-    //this.store.orderStatus = {
-    for (let j = 0; j < this.defaultStatusType.length; j++) {
-      if (this.defaultStatusType >0 && this.defaultStatusType[j].id < this.defaultStatusType[j + 1].id) {
-
-      }
-
-    }*/
   }
   close() {
     //przekazywanie zmian dla lepszego odswiezania?
