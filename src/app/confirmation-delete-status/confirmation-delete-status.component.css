@@ -1,15 +1,4 @@
-#status-select{
-  left: 200px;
-}
-
 #status{
-  left: 200px;
+margin-left:20px;
 }
- mat-form-field{
-   left: 200px;
- }
- mat-select{
-   left: 200px;
- }
-
 
