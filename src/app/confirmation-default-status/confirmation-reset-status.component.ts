@@ -27,6 +27,7 @@ export class ConfirmationResetStatusComponent {
 
 
   defaultStatus():void {
+
     for (let i = 0; i < this.defaultStatusType.length; i++) {
 
       this.taskService.addStatus(this.defaultStatusType[i])
@@ -37,19 +38,15 @@ export class ConfirmationResetStatusComponent {
           error: (e) => console.error(e)
         });
       this.dialogRef.close();
+    }
+
+    this.taskService.getAllStatus().subscribe((data:Status[]) =>{
+
+      for (let i = this.defaultStatusType.length; i < data.length; i++) {
+        this.defaultStatusType.push(data[i])
+      }
       this.localStore.saveData('lastOrder', JSON.stringify(this.defaultStatusType));
-    }
-
-    const order = (dane: Status[], order: number[]) => {
-
-      order.forEach(index=>{
-        if(index>=0 && index < dane.length) {
-          this.orders.push(dane[index])
-        }
-      })
-      console.log(this.orders)
-    }
-
+    })
 
   }
   close() {
