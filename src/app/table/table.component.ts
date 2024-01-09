@@ -96,7 +96,7 @@ export class TableComponent implements OnInit{
       console.log("CONTENER ID :" + contenerId);
       droppedIdOfTable = Number(contenerId.substring(event.container.id.length - 1))-this.x
       console.log( "cutted number: "+droppedIdOfTable);
-      statusToChange = this.statusType.find(i => i.id === droppedIdOfTable+1);
+      statusToChange = this.statusType.find(i => i.id === droppedIdOfTable+1);//todo do deleta
       console.log(statusToChange);
      this.changeStatus(statusToChange!.name);
       droppedIdOfTable += 3;

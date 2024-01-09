@@ -4,7 +4,7 @@
   <mat-form-field class="select-box" appearance="outline">
     <mat-label class="status-field-label">Status:</mat-label>
     <mat-select  appearance="outline" type="text" [(value)]=selectedStatus >
-      <mat-option  *ngFor="let status of statusTypes" value="{{status.id}}">
+      <mat-option  *ngFor="let status of orderStatus" value="{{status.id}}">
         {{status.name}}
       </mat-option>
     </mat-select>

@@ -5,35 +5,26 @@ import {MatDialogRef} from "@angular/material/dialog";
 import {TaskDetailsFormComponent} from "../task-details-form/task-details-form.component";
 import {Status} from "../status";
 import {LocalService} from "../local/local.service";
+import {find} from "rxjs";
 
 @Component({
   selector: 'app-confirmation-delete-status',
   templateUrl: './confirmation-delete-status.component.html',
   styleUrls: ['./confirmation-delete-status.component.css']
 })
-export class
+export class ConfirmationDeleteStatusComponent {
 
-
-
-
-
-ConfirmationDeleteStatusComponent {
-
-  statusTypes: Status[];
+  orderStatus: Status[];
   selectedStatus: Status;
 
   constructor( private store: Store,private taskService: TaskService,  private dialogRef: MatDialogRef<TaskDetailsFormComponent>, private localStore: LocalService) {
-    this.statusTypes = store.orderStatus;
-    console.log("construktor")
-    console.log(this.statusTypes)
+    this.orderStatus = store.orderStatus;
   }
 
 
-  deleteStatus(selectedStatusID: Status):void{
+  deleteStatus(selectedStatus: Status):void {
 
-    let selectedStatusIDNumber:number
-
-  this.taskService.deleteStatus(selectedStatusID)
+    this.taskService.deleteStatus(selectedStatus)
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -42,19 +33,19 @@ ConfirmationDeleteStatusComponent {
       });
     this.dialogRef.close()
 
+    const findState=this.orderStatus.find(function (item){
+      return item.id==Number(selectedStatus) //number
+    })
 
-    console.log("XDDDDDDDDD " + selectedStatusID)
-    console.log("statustype przed deletem")
-    console.log(this.statusTypes)
-    if(selectedStatusID!=null){
-      selectedStatusIDNumber=Number(selectedStatusID);
-      console.log("selected id number")
-      console.log(selectedStatusIDNumber)
-    this.store.orderStatus.splice(selectedStatusIDNumber,1)
+    if (findState!=null){
+      console.log(this.orderStatus.indexOf(findState))
+    this.orderStatus.splice(this.orderStatus.indexOf(findState),1)
+    this.localStore.saveData('lastOrder', JSON.stringify(this.orderStatus))
+}
 
-      this.localStore.saveData('lastOrder',JSON.stringify(this.store.orderStatus))
-      }
-  //TODO wraz z dodaniem id usunac ifas
+
+
+
   }
   close() {
     //przekazywanie zmian dla lepszego odswiezania?
