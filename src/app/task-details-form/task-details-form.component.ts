@@ -4,7 +4,6 @@ import {TaskService} from "../services/sevices/task.service";
 import {MatDialog, MatDialogConfig, MatDialogRef} from "@angular/material/dialog";
 import {Store} from "../store/store";
 import {Status} from "../status";
-import {AreUSureComponent} from "../are-u-sure/are-u-sure.component";
 
 @Component({
   selector: 'app-task-details-form',
@@ -16,14 +15,14 @@ export class TaskDetailsFormComponent implements OnInit {
   action: string = 'Edit';
   activity: string = 'WAITING';
   selectedTask: Task;
-  statusType: Status[];
+  orderStatus: Status[];
   constructor(private taskService: TaskService,
               private store: Store,
               public dialog: MatDialog,
               private dialogRef: MatDialogRef<TaskDetailsFormComponent>,) {
 
     this.selectedTask = store.selectedTask;
-    this.statusType = store.statusType;
+    this.orderStatus = store.orderStatus;
 
   }
 
@@ -89,10 +88,6 @@ export class TaskDetailsFormComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  areUSure() {
-   this.dialog.open(AreUSureComponent);
-   this.dialogRef.close();
-  }
 
   close() {
     //przekazywanie zmian dla lepszego odswiezania?

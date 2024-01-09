@@ -6,6 +6,7 @@ import {TaskDetailsFormComponent} from "../task-details-form/task-details-form.c
 import {Status} from "../status";
 import {LocalService} from "../local/local.service";
 import {find} from "rxjs";
+import {Task} from "../task";
 
 @Component({
   selector: 'app-confirmation-delete-status',
@@ -16,11 +17,11 @@ export class ConfirmationDeleteStatusComponent {
 
   orderStatus: Status[];
   selectedStatus: Status;
+  tasks: Task[];
 
   constructor( private store: Store,private taskService: TaskService,  private dialogRef: MatDialogRef<TaskDetailsFormComponent>, private localStore: LocalService) {
     this.orderStatus = store.orderStatus;
   }
-
 
   deleteStatus(selectedStatus: Status):void {
 
@@ -33,18 +34,55 @@ export class ConfirmationDeleteStatusComponent {
       });
     this.dialogRef.close()
 
-    const findState=this.orderStatus.find(function (item){
+    const findOrderStatus=this.orderStatus.find(function (item){
       return item.id==Number(selectedStatus) //number
     })
 
-    if (findState!=null){
-      console.log(this.orderStatus.indexOf(findState))
-    this.orderStatus.splice(this.orderStatus.indexOf(findState),1)
-    this.localStore.saveData('lastOrder', JSON.stringify(this.orderStatus))
-}
+    const existingStatus=this.orderStatus.find(function (item){
+      return item.name=="TO TESTS"
+    })
+    if (findOrderStatus!=null){
+      this.orderStatus.splice(this.orderStatus.indexOf(findOrderStatus),1)
+      this.localStore.saveData('lastOrder', JSON.stringify(this.orderStatus))
 
+      this.taskService.getTasks().subscribe((data:Task[]) =>{
+        this.tasks=data;
 
+        const findTask=this.tasks.find(function (item){
+          return item.status==findOrderStatus.name //number
+        })
 
+        if (findTask!=null){
+          let data;
+          if(existingStatus!=undefined && findTask.status=="TO_TESTS"){
+            data = {
+              id: findTask.id,
+              title: findTask.title,
+              description: findTask.description,
+              status: "TO TESTS"
+            };
+
+          }else{
+            data = {
+              id: findTask.id,
+              title: findTask.title,
+              description: findTask.description,
+              status: this.orderStatus[0].name
+            };
+          }
+
+          this.taskService.addTask(data)
+            .subscribe({
+              next: (res) => {
+                console.log(res);
+              },
+              error: (e) => console.error(e)
+            });
+          //TableComponent.refresh();
+          this.dialogRef.close();
+        }
+      })
+    }
 
   }
   close() {
