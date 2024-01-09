@@ -15,7 +15,7 @@ import {LocalService} from "../local/local.service";
 export class ConfirmationResetStatusComponent {
 
   statusTypes: Status[];
-  defaultStatusType: Status[]= [{ id:1, name:"TO FIX"} ,{ id:2, name:"TO TESTS"},{ id:3, name:"UNIT TESTS"},{ id:4, name:"MANUAL TESTS"},{ id:5, name:"AUTOMATION TESTS"},{ id:6, name:"FUNCTIONAL TESTS"},{ id:7, name:"READY TO DEPLOY"},{ id:8, name:"READY TO DEPLOY"}];
+  defaultStatusType: Status[]= [{ id:1, name:"TO FIX"} ,{ id:2, name:"TO TESTS"},{ id:3, name:"UNIT TESTS"},{ id:4, name:"MANUAL TESTS"},{ id:5, name:"AUTOMATION TESTS"},{ id:6, name:"FUNCTIONAL TESTS"},{ id:7, name:"READY TO DEPLOY"}];
   selectedStatus: Status;
   orders:Status[]=[]
 
