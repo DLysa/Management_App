@@ -13,7 +13,6 @@ import {TaskService} from "../services/sevices/task.service";
 export class AddTaskFormComponent implements OnInit {
 
   newTask: Task = {
-    id : 1,
     title: '',
     description: '',
     status:''

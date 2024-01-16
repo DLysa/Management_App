@@ -39,10 +39,7 @@
   top: 5px;
   margin: 20px;
 }
-.mat-dialog-actions {
-  position: static;
-  margin: 2%;
-}
+
 
 #delete-btn{
   position: absolute;
@@ -59,3 +56,5 @@
   color:orange;
   font-weight: bold;
 }
+
+

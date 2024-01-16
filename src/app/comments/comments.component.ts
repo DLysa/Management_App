@@ -3,6 +3,8 @@ import { Comment} from "../comment";
 import {CommentService} from "../services/sevices/comment.service";
 import {Task} from "../task";
 import {Store} from "../store/store";
+import {MatDialogRef} from "@angular/material/dialog";
+import {TaskDetailsFormComponent} from "../task-details-form/task-details-form.component";
 
 
 @Component({
@@ -15,7 +17,6 @@ export class CommentsComponent {
   private selectedTask: Task;
 
   newComment: Comment = {
-    id : 1,
     text: '',
     authorId: 'Aktualnie zalogowany',
     taskId:1,
@@ -27,7 +28,8 @@ export class CommentsComponent {
   commentText: any;
 
   constructor(private commentService: CommentService,
-              private store: Store) {
+              private store: Store,
+              private dialogRef: MatDialogRef<TaskDetailsFormComponent>) {
     this.selectedTask = store.selectedTask;
   }
 
@@ -36,6 +38,7 @@ export class CommentsComponent {
       console.log(data);
       this.comments2=data.filter(
         data=>data.taskId);
+      this.comments2=[...this.comments2].reverse();
 
       this.comments=data;
       console.log(this.comments2)
@@ -49,6 +52,7 @@ export class CommentsComponent {
   saveComment() {
     this.newComment.text=this.commentText
     this.newComment.status=this.selectedTask.status
+    this.newComment.taskId=this.selectedTask.id
     console.log(this.newComment)
     this.commentService.addComment(this.newComment)
       .subscribe({
@@ -61,5 +65,10 @@ export class CommentsComponent {
 
   clearInput() {
     this.commentText=""
+  }
+
+  close() {
+    this.dialogRef.close();
+
   }
 }

@@ -37,6 +37,10 @@ import {AuthService} from "./auth-services/auth.service";
 import { CommentsComponent } from './comments/comments.component';
 import { ConfirmationResetStatusComponent } from './confirmation-default-status/confirmation-reset-status.component';
 import { ProjectSettingsComponent } from './project-settings/project-settings.component';
+import { AdminComponent } from './admin/admin.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { DeleteUserComponent } from './delete-user/delete-user.component';
 
 
 @NgModule({
@@ -58,6 +62,10 @@ import { ProjectSettingsComponent } from './project-settings/project-settings.co
     CommentsComponent,
     ConfirmationResetStatusComponent,
     ProjectSettingsComponent,
+    AdminComponent,
+    AddUserComponent,
+    EditUserComponent,
+    DeleteUserComponent,
   ],
   imports: [
     BrowserModule,

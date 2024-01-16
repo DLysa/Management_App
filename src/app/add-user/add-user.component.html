@@ -1,0 +1,84 @@
+<div>
+
+  <mat-dialog-content>
+
+    <div >
+      <mat-form-field appearance="outline">
+        <mat-label> Username </mat-label>
+        <input matInput
+               placeholder="Username"
+               class="form-control"
+               id="username"
+               required
+               [(ngModel)]="newUser.username">
+
+      </mat-form-field>
+    </div>
+    <div >
+      <mat-form-field appearance="outline">
+        <mat-label> Password </mat-label>
+        <input matInput
+               placeholder="Password"
+               class="form-control"
+               id="password"
+               required
+               [(ngModel)]="newUser.password">
+
+      </mat-form-field>
+    </div>
+
+    <mat-form-field id="role" class="select-box" appearance="outline">
+      <mat-label class="role-field-label">Role:</mat-label>
+      <mat-select  appearance="outline" type="text"  [(ngModel)]="newUser.roles[0].role" >
+        <mat-option  *ngFor="let role of allRoles" value="{{role.role}} ">
+          {{role.role}}
+        </mat-option>
+      </mat-select>
+
+    </mat-form-field>
+
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label> First name </mat-label>
+        <input matInput
+               placeholder="First name"
+               class="form-control"
+               id="firstname"
+               required
+               [(ngModel)]="newUser.firstName">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label> Last name </mat-label>
+        <input matInput
+               placeholder="Last name"
+               class="form-control"
+               id="lastname"
+               required
+               [(ngModel)]="newUser.lastName">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label> Email </mat-label>
+        <input matInput
+               placeholder="Email"
+               class="form-control"
+               id="email"
+               required
+               [(ngModel)]="newUser.email">
+      </mat-form-field>
+    </div>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="mat-dialog-actions">
+    <button mat-raised-button color="primary" (click)="close()">Close</button>
+    <button mat-raised-button color="accent" (click)="addUser()">Add user</button>
+  </mat-dialog-actions>
+
+</div>

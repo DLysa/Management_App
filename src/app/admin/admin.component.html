@@ -1,0 +1,28 @@
+<mat-dialog-actions class="mat-dialog-actions" id="button-bar">
+  <button mat-raised-button color="accent" class="add" (click)="add()">Add</button>
+  <button mat-raised-button color="primary" class="delete"  (click)="delete()">Delete</button>
+</mat-dialog-actions>
+
+<table class="table table-striped">
+  <thead>
+  <th> Username</th>
+  <th> Password</th>
+
+  <th> First name</th>
+  <th> Last name</th>
+  <th> Email</th>
+  <th> Role</th>
+
+  </thead>
+  <tbody>
+  <tr *ngFor = "let user of users">
+    <td> {{user.username}}</td>
+    <td> {{user.password}}</td>
+    <td> {{user.firstName}}</td>
+    <td> {{user.lastName}}</td>
+    <td> {{user.email}}</td>
+    <td> {{user.roles[0].role}}</td>
+  </tr>
+  </tbody>
+</table>
+

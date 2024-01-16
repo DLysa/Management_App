@@ -4,6 +4,8 @@ import {TaskService} from "../services/sevices/task.service";
 import {MatDialog, MatDialogConfig, MatDialogRef} from "@angular/material/dialog";
 import {Store} from "../store/store";
 import {Status} from "../status";
+import {CommentService} from "../services/sevices/comment.service";
+import {Comment} from "../comment";
 
 @Component({
   selector: 'app-task-details-form',
@@ -16,10 +18,17 @@ export class TaskDetailsFormComponent implements OnInit {
   activity: string = 'WAITING';
   selectedTask: Task;
   orderStatus: Status[];
+  newComment: Comment = {
+    text: '',
+    authorId: '',
+    taskId:1,
+    status:""
+  };
   constructor(private taskService: TaskService,
               private store: Store,
               public dialog: MatDialog,
-              private dialogRef: MatDialogRef<TaskDetailsFormComponent>,) {
+              private dialogRef: MatDialogRef<TaskDetailsFormComponent>,
+              private commentService: CommentService) {
 
     this.selectedTask = store.selectedTask;
     this.orderStatus = store.orderStatus;
@@ -34,14 +43,30 @@ export class TaskDetailsFormComponent implements OnInit {
       this.selectedTask = data;
     });
   }
+  saveAutomicComment() {
 
+    this.newComment.status=this.selectedTask.status
+    this.newComment.text="Task moved to " +this.selectedTask.status
+    this.newComment.taskId=this.selectedTask.id
+    this.commentService.addComment(this.newComment)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (e) => console.error(e)
+      });
+
+  }
   editClick() {
 
     if (this.action == 'Edit') {
       this.action = 'Save';
     } else {
       this.action = 'Edit';
-      this.saveTask();
+      {
+      this.updateTask();
+      this.saveAutomicComment();
+      }
     }
   }
 
@@ -54,6 +79,26 @@ export class TaskDetailsFormComponent implements OnInit {
     }
   }
 
+
+  updateTask(): void {
+    const data = {
+      id: this.selectedTask.id,
+      title: this.selectedTask.title,
+      description: this.selectedTask.description,
+      status: this.selectedTask.status
+    };
+
+    this.taskService.updateTask(data)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (e) => console.error(e)
+      });
+    //TableComponent.refresh();
+    this.dialogRef.close();
+
+  }
   saveTask(): void {
     const data = {
       id: this.selectedTask.id,

@@ -1,0 +1,16 @@
+<div class="container">
+  <h2 mat-dialog-title>Select status to delete</h2>
+
+  <mat-form-field id="status" class="select-box" appearance="outline">
+    <mat-label class="status-field-label">Status:</mat-label>
+    <mat-select  appearance="outline" type="text" [(value)]=this.usernameToDelete >
+      <mat-option  *ngFor="let user of allUsers" value="{{user.username}}">
+        {{user.username}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="close()" >Cancel</button>
+    <button mat-button color="warn" (click)="deleteUser(this.usernameToDelete)"> Delete </button>
+  </mat-dialog-actions>
+</div>

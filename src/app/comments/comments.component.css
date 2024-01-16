@@ -57,3 +57,14 @@ margin: 20px 20px 0 20px;
   text-align: left;
   font-weight: bold;
 }
+
+.container{
+
+  max-height: 400px;
+}
+
+#close{
+
+  bottom: 2px;
+  margin: 0 2% 2% 1%;
+}
