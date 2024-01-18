@@ -8,7 +8,6 @@
 <button mat-raised-button color="primary" id=save *ngIf="isInputVisible" (click)="toggleInput(); saveComment();clearInput()">Done</button>
 </div>
 
-
 <div class="container">
 
 <div id="background" *ngFor="let comment of comments2; index as i">
@@ -17,16 +16,8 @@
   <div class="grid-child-element-author"> {{comments2[i].authorId }}</div>
   </div>
   <br>
-
   <div class="text">
     {{comments2[i].text }}
   </div>
-  <br> <br>
 </div>
-
-  <mat-dialog-actions class="mat-dialog-actions">
-    <button mat-raised-button color="primary" id="close" (click)="close()">Close</button>
-  </mat-dialog-actions>
-
-
 </div>

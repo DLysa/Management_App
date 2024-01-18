@@ -1,9 +1,10 @@
 .content{
   width: fit-content;
-  min-width: 600px;
+  min-width: 75vh;
   margin-left: 20px;
   margin-top: 30px;
   line-height: 35px;
+
 }
 
 .title{
@@ -59,7 +60,7 @@
   right:5px;
   top:105px;
   margin:20px;
-  color:orange;
+  color:blue;
   font-weight: bold;
 }
 
@@ -73,10 +74,15 @@
   word-wrap: normal;
   position: absolute;
   right:  57px;
-  top: 170px;
+  top: 165px;
   font-weight: bold;
   font-size: 22px;
   width: 30px;
-  text-align: right;
+  text-align: center;
+
+}
+.lastname {
+  top: 200px;
+  right: 80px;
 }
 

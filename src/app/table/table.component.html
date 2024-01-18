@@ -1,6 +1,6 @@
 <div cdkDropListGroup>
-  <h1>Project name</h1>
-  <app-show-pop-up-form></app-show-pop-up-form>
+  <h1>Project "Management App"</h1>
+  <action-buttons></action-buttons>
 
   <div  class="container" *ngFor="let status of store.orderStatus; let i=index;"  >
     <h2>{{status.name}}</h2>
@@ -15,11 +15,11 @@
         <ng-container *ngFor="let task of tasks">
           <div  class="box" *ngIf="status.name==task.status" (click)="openDialog(task)"
                cdkDrag>
-            <div>
+            <div class="title-on-task">
               {{task.title}}
             </div>
             <div class="drag-handle"  (mousedown)="draging(task)" cdkDragHandle>
-              <svg width="24px" fill="currentColor" siewBox="0 0 23 23">
+              <svg  width="24px" fill="currentColor" viewBox="0 0 23 23">
                 <path
                   d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
                 <path d="M0 0h24v24H0z" fill="none"></path>
@@ -29,9 +29,7 @@
         </ng-container>
       </div>
     </div>
-
   </div>
-
 </div>
 
 <!-- Copyright 2023 Google LLC. All Rights Reserved.

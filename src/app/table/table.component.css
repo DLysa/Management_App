@@ -1,22 +1,21 @@
 .container {
-  width: fit-content;
-  min-width: 150px;
-
-  margin: 10px 0px 55px 30px;
-  display: inline-block;
+  width: 245px;
+  margin: 25px 0 20px 15px;
   vertical-align: top;
   border-style: solid;
   color: black;
   background: #eeeeee;
+  display: inline-block;
+
 }
 
 .list {
-  margin: 0px 10px 10px 10px;
+  margin: 0 10px 10px 10px;
   min-height: 60px;
   background: grey;
   border-radius: 4px;
-  overflow: hidden;
-  display: block;
+  overflow: auto;
+
 }
 
 .box {
@@ -37,30 +36,23 @@
 .clickable{
   position: absolute;
   width: 200px ;
-
 }
 
 h2{
-  margin: 20px;
-  font-size:  22px;
+
+  margin: 15px;
+  font-size:  20px;
+  font-weight: bold;
+  text-align: center;
 }
 
 h1{
-  margin: 10px 20px 20px 30px;
+  margin: 20px 20px 0 30px;
   font-weight: bold;
-}
-
-.cdk-drag-preview {
-  box-sizing: border-box;
-  border-radius: 4px;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-  0 8px 10px 1px rgba(0, 0, 0, 0.14),
-  0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
 .cdk-drag-placeholder {
   opacity: 0;
-
 }
 
 .cdk-drag-animating {
@@ -81,4 +73,7 @@ h1{
   cursor: grab;
 
 }
-
+.title-on-task{
+  width: 80%;
+  word-wrap: normal;
+}

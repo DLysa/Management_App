@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {MatDialog, MatDialogConfig, MatDialogRef} from "@angular/material/dialog";
 import {AddStatusFormComponent} from "../add-status-form/add-status-form.component";
 import {AreUSureComponent} from "../are-u-sure/are-u-sure.component";
-import {ConfirmationDeleteStatusComponent} from "../confirmation-delete-status/confirmation-delete-status.component";
+import {DeleteStatusComponent} from "../delete-status/delete-status.component";
 import {TaskDetailsFormComponent} from "../task-details-form/task-details-form.component";
 import {ConfirmationResetStatusComponent} from "../confirmation-default-status/confirmation-reset-status.component";
 import {ProjectSettingsComponent} from "../project-settings/project-settings.component";
@@ -29,7 +29,7 @@ export class OptionsListComponent {
   }
 
   areUSure() {
-    this.dialog.open(ConfirmationDeleteStatusComponent);
+    this.dialog.open(DeleteStatusComponent);
 
   }
 
