@@ -30,8 +30,14 @@
 }
 
 .description-label{
-  font-size: 13px;
-  padding-bottom: 5px;
+  font-size: 12px;
+  font-weight: bolder;
+
+}
+
+.status-label{
+  font-size: 12px;
+  font-weight: bolder;
 }
 #edit-btn{
  position: absolute;
@@ -57,4 +63,20 @@
   font-weight: bold;
 }
 
+
+.description{
+  word-wrap: normal;
+  width: 80%;
+}
+
+.user-inprogress{
+  word-wrap: normal;
+  position: absolute;
+  right:  57px;
+  top: 170px;
+  font-weight: bold;
+  font-size: 22px;
+  width: 30px;
+  text-align: right;
+}
 

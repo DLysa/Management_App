@@ -1,4 +1,22 @@
-.mat-dialog-actions{
 
-  /*left: 80px;*/
+
+.mat-toolbar-row{
+  left: 60px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.container{
+  width: 500px;
+  height: 50%;
+}
+
+mat-form-field{
+width: 450px;
+}
+
+
+.form-field-desc{
+  height: 200px
+
 }
