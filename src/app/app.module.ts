@@ -26,7 +26,6 @@ import { ActionButtonsComponent } from './action-buttons/action-buttons.componen
 import {TaskDetailsFormComponent} from './task-details-form/task-details-form.component';
 import {MatSelectModule} from "@angular/material/select";
 import { AddStatusFormComponent } from './add-status-form/add-status-form.component';
-import { AreUSureComponent } from './are-u-sure/are-u-sure.component';
 import { OptionsListComponent } from './options-list/options-list.component';
 import {MatMenuModule} from "@angular/material/menu";
 import { DeleteStatusComponent } from './delete-status/delete-status.component';
@@ -54,7 +53,6 @@ import { DeleteUserComponent } from './delete-user/delete-user.component';
     ActionButtonsComponent,
     TaskDetailsFormComponent,
     AddStatusFormComponent,
-    AreUSureComponent,
     OptionsListComponent,
     DeleteStatusComponent,
     LoginComponent,

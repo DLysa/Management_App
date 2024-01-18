@@ -1,3 +1,11 @@
 #status-btn{
   margin-right: 20px;
 }
+
+
+button:focus{
+  background: #D01010;
+}
+mat-dialog-actions{
+  justify-content: right;
+}

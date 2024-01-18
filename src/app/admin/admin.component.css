@@ -17,3 +17,6 @@ table, th, td{
   width: 90%;
 }
 
+button:focus{
+  background: #D01010;
+}

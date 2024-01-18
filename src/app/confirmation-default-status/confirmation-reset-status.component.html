@@ -7,8 +7,9 @@
   <mat-label class="info-text-next-line">
   You can change sequence in "More options"-> "Project settings"
   </mat-label>
-  <mat-dialog-actions align="end">
-    <button mat-button (click)="close()" >Cancel</button>
-    <button mat-button color="warn" (click)="defaultStatus()"> Done </button>
+
+  <mat-dialog-actions class="mat-dialog-actions">
+    <button mat-raised-button id=close color="primary" (click)="close()"> Cancel </button>
+    <button mat-raised-button color="accent" (click)="defaultStatus()"> Done </button>
   </mat-dialog-actions>
 </div>

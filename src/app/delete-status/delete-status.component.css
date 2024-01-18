@@ -2,3 +2,9 @@
 margin-left:20px;
 }
 
+button:focus{
+  background: #D01010;
+}
+.mat-dialog-actions{
+  justify-content: right;
+}

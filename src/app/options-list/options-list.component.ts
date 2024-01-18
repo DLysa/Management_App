@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {MatDialog, MatDialogConfig, MatDialogRef} from "@angular/material/dialog";
 import {AddStatusFormComponent} from "../add-status-form/add-status-form.component";
-import {AreUSureComponent} from "../are-u-sure/are-u-sure.component";
 import {DeleteStatusComponent} from "../delete-status/delete-status.component";
 import {TaskDetailsFormComponent} from "../task-details-form/task-details-form.component";
 import {ConfirmationResetStatusComponent} from "../confirmation-default-status/confirmation-reset-status.component";
@@ -18,14 +17,9 @@ export class OptionsListComponent {
   ) {
   }
 
-  public openDialogStatus() {
+  addStatus(){
 
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-
-    this.dialog.open(AddStatusFormComponent, dialogConfig);
+    this.dialog.open(AddStatusFormComponent);
   }
 
   areUSure() {

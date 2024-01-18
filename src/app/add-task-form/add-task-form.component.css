@@ -21,11 +21,6 @@ width: 450px;
 
 }
 
-#more-option-btn:focus{
-
-  background: red;
-}
-
-.add-task-btn:focus{
-  background: red;
+button:focus{
+  background: #D01010;
 }

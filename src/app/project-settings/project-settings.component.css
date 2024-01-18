@@ -37,6 +37,9 @@
   margin: 20px;
 }
 
+button:focus{
+  background: #D01010;
+}
 
 
 .list {
@@ -97,3 +100,6 @@ h1{
 
 }
 
+mat-dialog-actions{
+  justify-content: right;
+}

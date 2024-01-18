@@ -86,3 +86,6 @@
   right: 80px;
 }
 
+button:focus{
+  background: #D01010;
+}

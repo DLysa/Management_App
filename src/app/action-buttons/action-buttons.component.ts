@@ -16,8 +16,7 @@ export class ActionButtonsComponent {
 
     const dialogConfig = new MatDialogConfig();
 
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
+    dialogConfig.autoFocus = false;
 
     this.dialog.open(AddTaskFormComponent, dialogConfig);
 

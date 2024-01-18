@@ -112,7 +112,7 @@ export class TableComponent implements OnInit{
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
+    dialogConfig.autoFocus = false;
     dialogConfig.minHeight = 400;
     dialogConfig.minWidth = 300;
 
