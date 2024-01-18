@@ -5,10 +5,22 @@
   top: 20px;
   z-index: 1;
 }
+
+.container:focus{
+  background: #D01010;
+}
 #task-btn{
   margin-right: 20px;
+}
+#task-btn:focus{
+  background: #D01010;
+}
+
+#options-btn:focus{
+  background: #D01010;
 }
 
 #matMenu{
   margin-right: 20px;
 }
+

@@ -22,14 +22,14 @@ import { AddTaskFormComponent } from './add-task-form/add-task-form.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import { ShowPopUpFormComponent } from './show-pop-up-form/show-pop-up-form.component';
+import { ActionButtonsComponent } from './action-buttons/action-buttons.component';
 import {TaskDetailsFormComponent} from './task-details-form/task-details-form.component';
 import {MatSelectModule} from "@angular/material/select";
 import { AddStatusFormComponent } from './add-status-form/add-status-form.component';
 import { AreUSureComponent } from './are-u-sure/are-u-sure.component';
 import { OptionsListComponent } from './options-list/options-list.component';
 import {MatMenuModule} from "@angular/material/menu";
-import { ConfirmationDeleteStatusComponent } from './confirmation-delete-status/confirmation-delete-status.component';
+import { DeleteStatusComponent } from './delete-status/delete-status.component';
 
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -51,12 +51,12 @@ import { DeleteUserComponent } from './delete-user/delete-user.component';
     TableComponent,
     TaskComponent,
     AddTaskFormComponent,
-    ShowPopUpFormComponent,
+    ActionButtonsComponent,
     TaskDetailsFormComponent,
     AddStatusFormComponent,
     AreUSureComponent,
     OptionsListComponent,
-    ConfirmationDeleteStatusComponent,
+    DeleteStatusComponent,
     LoginComponent,
     HomeComponent,
     CommentsComponent,

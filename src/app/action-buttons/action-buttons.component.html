@@ -1,9 +1,8 @@
 <div class = "container">
-<!--  <button mat-raised-button color="accent" id="status-btn" (click)="openDialogStatus()"> + Add status</button>-->
 
  <button mat-raised-button color="accent"  id="task-btn" (click)="openDialogTask()"> Add task <mat-icon>add</mat-icon></button>
 
-  <button mat-raised-button color="accent" [matMenuTriggerFor]="menu"> More options <mat-icon>menu</mat-icon></button>
+  <button mat-raised-button color="accent" id="options-btn" [matMenuTriggerFor]="menu"> More options <mat-icon>menu</mat-icon></button>
   <mat-menu #menu="matMenu" id="matMenu">
     <app-options-list></app-options-list>
   </mat-menu>

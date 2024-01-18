@@ -10,10 +10,10 @@ import {Task} from "../task";
 
 @Component({
   selector: 'app-confirmation-delete-status',
-  templateUrl: './confirmation-delete-status.component.html',
-  styleUrls: ['./confirmation-delete-status.component.css']
+  templateUrl: './delete-status.component.html',
+  styleUrls: ['./delete-status.component.css']
 })
-export class ConfirmationDeleteStatusComponent {
+export class DeleteStatusComponent {
 
   orderStatus: Status[];
   selectedStatus: Status;

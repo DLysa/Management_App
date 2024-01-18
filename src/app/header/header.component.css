@@ -11,3 +11,7 @@
 .user{
   margin-right: 20px;
 }
+
+#logout:focus{
+  background: #D01010;
+}

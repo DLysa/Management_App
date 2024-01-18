@@ -20,3 +20,12 @@ width: 450px;
   height: 200px
 
 }
+
+#more-option-btn:focus{
+
+  background: red;
+}
+
+.add-task-btn:focus{
+  background: red;
+}

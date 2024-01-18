@@ -4,11 +4,11 @@ import { AddTaskFormComponent } from "../add-task-form/add-task-form.component";
 
 
 @Component({
-  selector: 'app-show-pop-up-form',
-  templateUrl: './show-pop-up-form.component.html',
-  styleUrls: ['./show-pop-up-form.component.css']
+  selector: 'action-buttons',
+  templateUrl: './action-buttons.component.html',
+  styleUrls: ['./action-buttons.component.css']
 })
-export class ShowPopUpFormComponent {
+export class ActionButtonsComponent {
 
   constructor(private dialog: MatDialog) {}
 
