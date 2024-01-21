@@ -2,23 +2,26 @@ import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {User} from "../../user";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserServiceService {
-  private  baseUrl = "http://localhost:8080/secure/auth/";
+  private baseUrl = "http://localhost:8080/secure/auth/";
 
-  constructor(private http: HttpClient) { }
-
-
-  getAllUsers(): Observable<User[]>{
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.get<User[]>(`${this.baseUrl}showAllUsers`,{headers});
+  constructor(private http: HttpClient,
+              private router: Router) {
   }
 
-  addUser(data: any): Observable<any>{
-    return this.http.post(`${this.baseUrl}addUser`,data);
+
+  getAllUsers(): Observable<User[]> {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.get<User[]>(`${this.baseUrl}showAllUsers`, {headers});
+  }
+
+  addUser(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}addUser`, data);
   }
 
   deleteUser(username: String): Observable<any> {
@@ -27,7 +30,7 @@ export class UserServiceService {
   }
 
   getUserInfo() {
-    return this.http.get<any>('http://localhost:8080/rest/auth/userinfo', { withCredentials: true });
+    return this.http.get<any>('http://localhost:8080/rest/auth/userinfo', {withCredentials: true});
   }
 
 }

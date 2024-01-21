@@ -12,5 +12,5 @@ export class Store {
   statusType : Status[];
   orderStatus : Status[];
   allUsers:User[];
-  allRoles:Role[]=[{role_id:"1", role:"ADMIN"},{role_id:"2", role:"TESTER"},{role_id:"3", role:"PROGRAMIST"},{role_id:"4", role:"MANAGER"},{role_id:"5", role:"GUEST"}]
+  allRoles:Role[]=[{role_id:"1", role:"ADMIN"},{role_id:"2", role:"TESTER"},{role_id:"3", role:"PROGRAMMER"},{role_id:"4", role:"MANAGER"},{role_id:"5", role:"GUEST"}]
 }

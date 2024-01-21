@@ -14,7 +14,7 @@ export class HeaderComponent  implements OnInit {
   userInfo: any;
   roles:string = '';
   fullName:string = '';
-  constructor(private userService: UserServiceService) {}
+  constructor(private authService: AuthService, private userService: UserServiceService) {}
 
   ngOnInit() {
     this.userService.getUserInfo().subscribe(
@@ -29,6 +29,10 @@ export class HeaderComponent  implements OnInit {
         console.error('Error fetching user info', error);
       }
     );
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }
