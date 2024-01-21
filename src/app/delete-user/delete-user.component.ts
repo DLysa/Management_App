@@ -9,7 +9,7 @@ import {User} from "../user";
   templateUrl: './delete-user.component.html',
   styleUrls: ['./delete-user.component.css']
 })
-export class DeleteUserComponent {
+export class DeleteUserComponent /*imlement on init? //todo */ {
   usernameToDelete: String;
   protected allUsers: User[];
 

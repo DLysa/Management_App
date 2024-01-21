@@ -5,7 +5,6 @@ import {ConfirmationResetStatusComponent} from "../confirmation-default-status/c
 import {MatDialog} from "@angular/material/dialog";
 import {AddUserComponent} from "../add-user/add-user.component";
 import {Store} from "../store/store";
-import {EditUserComponent} from "../edit-user/edit-user.component";
 import {DeleteUserComponent} from "../delete-user/delete-user.component";
 
 @Component({
@@ -35,9 +34,7 @@ export class AdminComponent implements OnInit{
     this.dialog.open(AddUserComponent);
   }
 
-  edit() {
-    this.dialog.open(EditUserComponent);
-  }
+
 
   delete() {
     this.dialog.open(DeleteUserComponent);

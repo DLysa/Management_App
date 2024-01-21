@@ -23,12 +23,10 @@ export class AddStatusFormComponent {
               private localStore: LocalService,
               private store: Store) { }
 
-  ngOnInit(): void {
-  }
 
   saveStatus(): void {
     const data = {
-      id: Number(this.newStatus.id),
+      id: this.newStatus.id,    //todo here maybe can be mistake
       name: this.newStatus.name
     };
 
@@ -40,12 +38,10 @@ export class AddStatusFormComponent {
         error: (e) => console.error(e)
       });
 
-
     this.store.orderStatus.push(data)
     this.localStore.saveData('lastOrder',JSON.stringify(this.store.orderStatus))
 
-    //TableComponent.refresh();
-    this.dialogRef.close();//todo potrzebne?
+    this.dialogRef.close();
 
   }
   close() {

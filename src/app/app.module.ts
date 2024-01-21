@@ -29,8 +29,6 @@ import { AddStatusFormComponent } from './add-status-form/add-status-form.compon
 import { OptionsListComponent } from './options-list/options-list.component';
 import {MatMenuModule} from "@angular/material/menu";
 import { DeleteStatusComponent } from './delete-status/delete-status.component';
-
-import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import {AuthService} from "./auth-services/auth.service";
 import { CommentsComponent } from './comments/comments.component';
@@ -38,7 +36,6 @@ import { ConfirmationResetStatusComponent } from './confirmation-default-status/
 import { ProjectSettingsComponent } from './project-settings/project-settings.component';
 import { AdminComponent } from './admin/admin.component';
 import { AddUserComponent } from './add-user/add-user.component';
-import { EditUserComponent } from './edit-user/edit-user.component';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
 
 
@@ -55,14 +52,12 @@ import { DeleteUserComponent } from './delete-user/delete-user.component';
     AddStatusFormComponent,
     OptionsListComponent,
     DeleteStatusComponent,
-    LoginComponent,
     HomeComponent,
     CommentsComponent,
     ConfirmationResetStatusComponent,
     ProjectSettingsComponent,
     AdminComponent,
     AddUserComponent,
-    EditUserComponent,
     DeleteUserComponent,
   ],
   imports: [

@@ -18,13 +18,11 @@ export class OptionsListComponent {
   }
 
   addStatus(){
-
     this.dialog.open(AddStatusFormComponent);
   }
 
-  areUSure() {
+  deleteStatus() {
     this.dialog.open(DeleteStatusComponent);
-
   }
 
   resetStatus() {

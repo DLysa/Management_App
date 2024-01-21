@@ -4,7 +4,7 @@
 <input matInput placeholder="Comment"  [(ngModel)]="commentText" value="{{commentText}}">
 </mat-form-field>
 <div id="input-button">
-<button mat-raised-button color="accent" id=cancel *ngIf="isInputVisible" (click)="toggleInput();clearInput();">Cancel</button>
+<button mat-raised-button style="background-color:#A50087;color:white " id=cancel *ngIf="isInputVisible" (click)="toggleInput();clearInput();">Cancel</button>
 <button mat-raised-button color="primary" id=save *ngIf="isInputVisible" (click)="toggleInput(); saveComment();clearInput()">Done</button>
 </div>
 

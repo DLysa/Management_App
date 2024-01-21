@@ -25,4 +25,9 @@ export class UserServiceService {
     console.log(`${(this.baseUrl)}deleteUser/${username}`)
     return this.http.delete(`${(this.baseUrl)}deleteUser/${username}`);
   }
+
+  getUserInfo() {
+    return this.http.get<any>('http://localhost:8080/rest/auth/userinfo', { withCredentials: true });
+  }
+
 }
