@@ -37,7 +37,7 @@ export class CommentsComponent {
     this.commentService.getAllComments().subscribe((data:Comment[]) => {
       console.log(data);
       this.comments2=data.filter(
-        data=>data.taskId);
+        data=>data.taskId===this.selectedTask.id);
       this.comments2=[...this.comments2].reverse();
 
       this.comments=data;
