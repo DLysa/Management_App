@@ -12,16 +12,9 @@ import {TaskDetailsFormComponent} from "../task-details-form/task-details-form.c
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.css']
 })
-export class CommentsComponent {
+export class CommentsComponent implements OnInit{
 
   private selectedTask: Task;
-
-  newComment: Comment = {
-    text: '',
-    authorId: '',
-    taskId:1,
-    status:""
-  };
   comments: Comment[];
   comments2: Comment[];
   isInputVisible: boolean = false;
