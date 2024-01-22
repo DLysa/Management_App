@@ -52,7 +52,6 @@ export class TableComponent implements OnInit{
     this.taskService.getAllStatus().subscribe((data:Status[]) =>{
       console.log(data);
       this.statusType=data;
-
       this.store.statusType = data;
     })
   }
@@ -66,7 +65,7 @@ export class TableComponent implements OnInit{
       status: statusAfter
     };
 
-    this.taskService.addTask(data)
+    this.taskService.updateTask(data)
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -99,8 +98,8 @@ export class TableComponent implements OnInit{
       statusToChange = this.statusType.find(i => i.id === droppedIdOfTable+1);//todo do deleta
       console.log(statusToChange);
      this.changeStatus(statusToChange!.name);
-      droppedIdOfTable += 3;
-      this.x+=3
+      //droppedIdOfTable += 3;
+      //this.x+=3
       console.log(this.statusType.length)
 
     }
