@@ -6,6 +6,7 @@ import {Store} from "../store/store";
 import {Status} from "../status";
 import {CommentService} from "../services/sevices/comment.service";
 import {Comment} from "../comment";
+import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
 
 @Component({
   selector: 'app-task-details-form',
@@ -18,12 +19,6 @@ export class TaskDetailsFormComponent implements OnInit {
   activity: string = 'WAITING';
   selectedTask: Task;
   orderStatus: Status[];
-  newComment: Comment = {
-    text: '',
-    authorId: '',
-    taskId:1,
-    status:""
-  };
   currentUserFirstName: string;
   currentUserLastName: string;
   originalStatus: string;
@@ -59,11 +54,13 @@ export class TaskDetailsFormComponent implements OnInit {
 
   }
   saveAutomicComment() {
+  const data={
+    status:this.selectedTask.status,
+    text:"Task moved to " +this.selectedTask.status,
+    taskId:this.selectedTask.id
+  }
 
-    this.newComment.status=this.selectedTask.status
-    this.newComment.text="Task moved to " +this.selectedTask.status
-    this.newComment.taskId=this.selectedTask.id
-    this.commentService.addComment(this.newComment)
+    this.commentService.addComment(data)
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -84,7 +81,6 @@ export class TaskDetailsFormComponent implements OnInit {
         this.saveAutomicComment();
       }
 
-      this.dialogRef.close();
       }
     }
   }
