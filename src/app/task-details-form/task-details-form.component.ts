@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Task} from "../task";
 import {TaskService} from "../services/sevices/task.service";
 import {MatDialog, MatDialogConfig, MatDialogRef} from "@angular/material/dialog";
@@ -26,11 +26,13 @@ export class TaskDetailsFormComponent implements OnInit {
   };
   currentUserFirstName: string;
   currentUserLastName: string;
+  originalStatus: string;
   constructor(private taskService: TaskService,
               private store: Store,
               public dialog: MatDialog,
               private dialogRef: MatDialogRef<TaskDetailsFormComponent>,
-              private commentService: CommentService) {
+              private commentService: CommentService,
+              private cdr: ChangeDetectorRef) {
 
     this.selectedTask = store.selectedTask;
     this.orderStatus = store.orderStatus;
@@ -43,13 +45,14 @@ export class TaskDetailsFormComponent implements OnInit {
     this.taskService.getTask(this.selectedTask.id).subscribe((data: Task) => {
       // console.log(data);
       this.selectedTask = data;
+      this.originalStatus = data.status
 
       let namePart:string[] = this.selectedTask.workingFullName?.split(" ") ?? [];
       this.currentUserFirstName=namePart[0]
       this.currentUserLastName=namePart[1]
-      if (this.selectedTask.workingFullName!="")
+      if (this.selectedTask.workingFullName!=null && this.selectedTask.workingFullName != '')
       {
-        this.activity="IN PROGRESS"
+        this.activity="IN PROGRESS BY"
       }
     });
 
@@ -77,7 +80,10 @@ export class TaskDetailsFormComponent implements OnInit {
       this.action = 'Edit';
       {
       this.updateTask();
-      this.saveAutomicComment();
+      if(this.originalStatus!=this.selectedTask.status){
+        this.saveAutomicComment();
+      }
+
       this.dialogRef.close();
       }
     }
@@ -87,22 +93,17 @@ export class TaskDetailsFormComponent implements OnInit {
     let change:String;
 
     if (this.activity=="WAITING") {
-
-      this.activity = 'IN PROGRESS';
+      this.activity = 'IN PROGRESS BY';
       change = `${this.store.currentUser.firstName} ${this.store.currentUser.lastName}`
-
     } else {
       this.activity = 'WAITING';
       change=""
       this.currentUserFirstName=""
       this.currentUserLastName=""
     }
-
     this.updateTask(change);
 
   }
-
-
 
 
   updateTask(workingFullname?:String): void {
@@ -121,28 +122,6 @@ export class TaskDetailsFormComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
-    //TableComponent.refresh();
-
-
-  }
-  saveTask(): void {
-    const data = {
-      id: this.selectedTask.id,
-      title: this.selectedTask.title,
-      description: this.selectedTask.description,
-      status: this.selectedTask.status
-    };
-
-    this.taskService.addTask(data)
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-        },
-        error: (e) => console.error(e)
-      });
-    //TableComponent.refresh();
-    this.dialogRef.close();
-
   }
 
   deleteTask():void{

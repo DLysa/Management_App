@@ -12,7 +12,7 @@
 
 #add-comment-input{
 margin: 20px 20px 0 20px;
-  width: 95%;
+  width: 94%;
 }
 #cancel{
   margin-right: 10px;
@@ -63,4 +63,8 @@ margin-top: 7px;
 
 button:focus{
   background: #D01010;
+}
+
+.container{
+  overflow-x: hidden;
 }

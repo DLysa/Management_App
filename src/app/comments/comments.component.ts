@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { Comment} from "../comment";
 import {CommentService} from "../services/sevices/comment.service";
 import {Task} from "../task";
@@ -29,7 +29,7 @@ export class CommentsComponent {
 
   constructor(private commentService: CommentService,
               private store: Store,
-              private dialogRef: MatDialogRef<TaskDetailsFormComponent>) {
+              private dialogRef: MatDialogRef<TaskDetailsFormComponent>,) {
     this.selectedTask = store.selectedTask;
   }
 
