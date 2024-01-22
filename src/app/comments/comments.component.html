@@ -10,14 +10,14 @@
 
 <div class="container">
 
-<div id="background" *ngFor="let comment of comments2; index as i">
+<div id="background" *ngFor="let comment of comments; index as i">
   <div class="info-bar">
-  <div class="grid-child-element-status"> {{comments2[i].status }} </div>
-  <div class="grid-child-element-author"> {{comments2[i].authorId }}</div>
+  <div class="grid-child-element-status"> {{comments[i].status }} </div>
+  <div class="grid-child-element-author"> {{comments[i].authorId }}</div>
   </div>
   <br>
   <div class="text">
-    {{comments2[i].text }}
+    {{comments[i].text }}
   </div>
 </div>
 </div>
