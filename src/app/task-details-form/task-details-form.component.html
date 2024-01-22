@@ -26,8 +26,8 @@
         </mat-select>
       </mat-form-field>
     </div>
-<div class="user-inprogress firstname"> Jan </div>
-    <div class="user-inprogress lastname" > Kowalski </div>
+<div class="user-inprogress firstname"> {{currentUserFirstName }} </div>
+    <div class="user-inprogress lastname" > {{currentUserLastName }} </div>
     <ng-template #elseBlock>
       <div class="title">
         {{selectedTask.title}}

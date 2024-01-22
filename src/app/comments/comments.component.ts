@@ -50,12 +50,14 @@ export class CommentsComponent {
   }
 
   saveComment() {
-    this.newComment.text=this.commentText
-    this.newComment.status=this.selectedTask.status
-    this.newComment.taskId=this.selectedTask.id
-    this.newComment.authorId=`${this.store.currentUser.firstName} ${this.store.currentUser.lastName}`;
-    console.log(this.newComment)
-    this.commentService.addComment(this.newComment)
+    const data ={
+      text : this.commentText,
+      status : this.selectedTask.status,
+      taskId: this.selectedTask.id,
+      authorId: `${this.store.currentUser.firstName} ${this.store.currentUser.lastName}`
+    }
+
+    this.commentService.addComment(data)
       .subscribe({
         next: (res) => {
           console.log(res);

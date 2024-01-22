@@ -24,6 +24,8 @@ export class TaskDetailsFormComponent implements OnInit {
     taskId:1,
     status:""
   };
+  currentUserFirstName: string;
+  currentUserLastName: string;
   constructor(private taskService: TaskService,
               private store: Store,
               public dialog: MatDialog,
@@ -41,7 +43,17 @@ export class TaskDetailsFormComponent implements OnInit {
     this.taskService.getTask(this.selectedTask.id).subscribe((data: Task) => {
       // console.log(data);
       this.selectedTask = data;
+
+      let namePart:string[] = this.selectedTask.workingFullName?.split(" ") ?? [];
+      this.currentUserFirstName=namePart[0]
+      this.currentUserLastName=namePart[1]
+      if (this.selectedTask.workingFullName!="")
+      {
+        this.activity="IN PROGRESS"
+      }
     });
+
+
   }
   saveAutomicComment() {
 
@@ -66,26 +78,40 @@ export class TaskDetailsFormComponent implements OnInit {
       {
       this.updateTask();
       this.saveAutomicComment();
+      this.dialogRef.close();
       }
     }
   }
 
   activityChange() {
+    let change:String;
 
-    if (this.activity == 'WAITING') {
+    if (this.activity=="WAITING") {
+
       this.activity = 'IN PROGRESS';
+      change = `${this.store.currentUser.firstName} ${this.store.currentUser.lastName}`
+
     } else {
       this.activity = 'WAITING';
+      change=""
+      this.currentUserFirstName=""
+      this.currentUserLastName=""
     }
+
+    this.updateTask(change);
+
   }
 
 
-  updateTask(): void {
+
+
+  updateTask(workingFullname?:String): void {
     const data = {
       id: this.selectedTask.id,
       title: this.selectedTask.title,
       description: this.selectedTask.description,
-      status: this.selectedTask.status
+      status: this.selectedTask.status,
+      workingFullName:workingFullname
     };
 
     this.taskService.updateTask(data)
@@ -96,7 +122,7 @@ export class TaskDetailsFormComponent implements OnInit {
         error: (e) => console.error(e)
       });
     //TableComponent.refresh();
-    this.dialogRef.close();
+
 
   }
   saveTask(): void {
