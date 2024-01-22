@@ -1,11 +1,13 @@
 .container {
-  width: 245px;
+  width: 212px;
+  grid-template-columns: 2fr 1fr;
   margin: 25px 0 20px 15px;
   vertical-align: top;
   border-style: solid;
   color: black;
   background: #eeeeee;
   display: inline-block;
+  word-wrap: break-word;
 
 }
 
@@ -69,11 +71,10 @@ h1{
 
 .drag-handle{
   position: relative;
-  right: 10px;
   cursor: grab;
-
-}
+ }
 .title-on-task{
-  width: 80%;
-  word-wrap: normal;
+  width: 85%;
+  word-wrap: break-word;
+
 }
