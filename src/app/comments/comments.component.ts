@@ -18,7 +18,7 @@ export class CommentsComponent {
 
   newComment: Comment = {
     text: '',
-    authorId: 'Aktualnie zalogowany',
+    authorId: '',
     taskId:1,
     status:""
   };
@@ -53,6 +53,7 @@ export class CommentsComponent {
     this.newComment.text=this.commentText
     this.newComment.status=this.selectedTask.status
     this.newComment.taskId=this.selectedTask.id
+    this.newComment.authorId=`${this.store.currentUser.firstName} ${this.store.currentUser.lastName}`;
     console.log(this.newComment)
     this.commentService.addComment(this.newComment)
       .subscribe({

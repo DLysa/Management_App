@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../auth-services/auth.service";
 import {UserServiceService} from "../services/user-service/user-service.service";
+import {Store} from "../store/store";
 
 
 
@@ -14,12 +15,13 @@ export class HeaderComponent  implements OnInit {
   userInfo: any;
   roles:string = '';
   fullName:string = '';
-  constructor(private authService: AuthService, private userService: UserServiceService) {}
+  constructor(private authService: AuthService, private userService: UserServiceService, private store:Store) {}
 
   ngOnInit() {
     this.userService.getUserInfo().subscribe(
       data => {
         this.userInfo = data;
+        this.store.currentUser =data
         this.fullName = `${this.userInfo.firstName} ${this.userInfo.lastName}`;
         this.roles = this.userInfo.roles.map((role: { authority: any; }) => role.authority.replace('ROLE_',''))
           .join(', ');
