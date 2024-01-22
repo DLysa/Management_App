@@ -6,6 +6,7 @@ import {Store} from "../store/store";
 import {Status} from "../status";
 import {CommentService} from "../services/sevices/comment.service";
 import {Comment} from "../comment";
+import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
 
 @Component({
   selector: 'app-task-details-form',
@@ -18,12 +19,6 @@ export class TaskDetailsFormComponent implements OnInit {
   activity: string = 'WAITING';
   selectedTask: Task;
   orderStatus: Status[];
-  newComment: Comment = {
-    text: '',
-    authorId: '',
-    taskId:1,
-    status:""
-  };
   currentUserFirstName: string;
   currentUserLastName: string;
   originalStatus: string;
@@ -31,8 +26,7 @@ export class TaskDetailsFormComponent implements OnInit {
               private store: Store,
               public dialog: MatDialog,
               private dialogRef: MatDialogRef<TaskDetailsFormComponent>,
-              private commentService: CommentService,
-              private cdr: ChangeDetectorRef) {
+              private commentService: CommentService) {
 
     this.selectedTask = store.selectedTask;
     this.orderStatus = store.orderStatus;
@@ -41,29 +35,36 @@ export class TaskDetailsFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.selectedTask)
+    this.loadTasks();
+  }
+
+  loadTasks(){
     this.taskService.getTask(this.selectedTask.id).subscribe((data: Task) => {
       // console.log(data);
       this.selectedTask = data;
       this.originalStatus = data.status
 
-      let namePart:string[] = this.selectedTask.workingFullName?.split(" ") ?? [];
-      this.currentUserFirstName=namePart[0]
-      this.currentUserLastName=namePart[1]
-      if (this.selectedTask.workingFullName!=null && this.selectedTask.workingFullName != '')
-      {
-        this.activity="IN PROGRESS BY"
-      }
+      this.updateCurrentUserNames();
     });
-
-
   }
-  saveAutomicComment() {
 
-    this.newComment.status=this.selectedTask.status
-    this.newComment.text="Task moved to " +this.selectedTask.status
-    this.newComment.taskId=this.selectedTask.id
-    this.commentService.addComment(this.newComment)
+  updateCurrentUserNames(){
+    let namePart:string[] = this.selectedTask.workingFullName?.split(" ") ?? [];
+    this.currentUserFirstName=namePart[0]
+    this.currentUserLastName=namePart[1]
+    if (this.selectedTask.workingFullName!=null && this.selectedTask.workingFullName != '')
+    {
+      this.activity="IN PROGRESS BY"
+    }
+  }
+  saveAutomaticComment() {
+  const data={
+    status:this.selectedTask.status,
+    text:"Task moved to " +this.selectedTask.status,
+    taskId:this.selectedTask.id
+  }
+
+    this.commentService.addComment(data)
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -81,10 +82,9 @@ export class TaskDetailsFormComponent implements OnInit {
       {
       this.updateTask();
       if(this.originalStatus!=this.selectedTask.status){
-        this.saveAutomicComment();
+        this.saveAutomaticComment();
       }
 
-      this.dialogRef.close();
       }
     }
   }
@@ -95,6 +95,8 @@ export class TaskDetailsFormComponent implements OnInit {
     if (this.activity=="WAITING") {
       this.activity = 'IN PROGRESS BY';
       change = `${this.store.currentUser.firstName} ${this.store.currentUser.lastName}`
+      this.currentUserFirstName=this.store.currentUser.firstName
+      this.currentUserLastName=this.store.currentUser.lastName
     } else {
       this.activity = 'WAITING';
       change=""
@@ -102,7 +104,6 @@ export class TaskDetailsFormComponent implements OnInit {
       this.currentUserLastName=""
     }
     this.updateTask(change);
-
   }
 
 

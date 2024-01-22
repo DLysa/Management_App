@@ -5,19 +5,19 @@
 </mat-form-field>
 <div id="input-button">
 <button mat-raised-button style="background-color:#A50087;color:white " id=cancel *ngIf="isInputVisible" (click)="toggleInput();clearInput();">Cancel</button>
-<button mat-raised-button color="primary" id=save *ngIf="isInputVisible" (click)="toggleInput(); saveComment();clearInput()">Done</button>
+<button mat-raised-button color="primary" id=save *ngIf="isInputVisible" (click)="toggleInput();saveComment();">Done</button>
 </div>
 
 <div class="container">
 
-<div id="background" *ngFor="let comment of comments; index as i">
+<div id="background" *ngFor="let comment of comments">
   <div class="info-bar">
-  <div class="grid-child-element-status"> {{comments[i].status }} </div>
-  <div class="grid-child-element-author"> {{comments[i].authorId }}</div>
+  <div class="grid-child-element-status"> {{comment.status }} </div>
+  <div class="grid-child-element-author"> {{comment.authorId }}</div>
   </div>
   <br>
   <div class="text">
-    {{comments[i].text }}
+    {{comment.text }}
   </div>
 </div>
 </div>

@@ -48,7 +48,6 @@ export class CommentsComponent implements OnInit {
     this.commentService.addComment(newComment).subscribe({
       next: (res) => {
         this.comments.unshift(res);
-        this.toggleInput();
         this.clearInput();
       },
       error: (e) => console.error(e)
