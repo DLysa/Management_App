@@ -15,9 +15,9 @@
 }
 
 .title-field {
-  /*  position: relative;*/
-  /*  padding-right: 120px;*/
-  /*  margin-right: 120px;*/
+  /* position: relative;*/
+  /* adding-right: 120px;*/
+  /* margin-right: 120px;*/
 
 }
 
@@ -67,7 +67,7 @@
 
 .description{
   word-wrap: normal;
-  width: 80%;
+  width: 100%;
 }
 
 .user-inprogress{
