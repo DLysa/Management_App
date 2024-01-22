@@ -26,8 +26,7 @@ export class TaskDetailsFormComponent implements OnInit {
               private store: Store,
               public dialog: MatDialog,
               private dialogRef: MatDialogRef<TaskDetailsFormComponent>,
-              private commentService: CommentService,
-              private cdr: ChangeDetectorRef) {
+              private commentService: CommentService) {
 
     this.selectedTask = store.selectedTask;
     this.orderStatus = store.orderStatus;
@@ -36,24 +35,29 @@ export class TaskDetailsFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.selectedTask)
+    this.loadTasks();
+  }
+
+  loadTasks(){
     this.taskService.getTask(this.selectedTask.id).subscribe((data: Task) => {
       // console.log(data);
       this.selectedTask = data;
       this.originalStatus = data.status
 
-      let namePart:string[] = this.selectedTask.workingFullName?.split(" ") ?? [];
-      this.currentUserFirstName=namePart[0]
-      this.currentUserLastName=namePart[1]
-      if (this.selectedTask.workingFullName!=null && this.selectedTask.workingFullName != '')
-      {
-        this.activity="IN PROGRESS BY"
-      }
+      this.updateCurrentUserNames();
     });
-
-
   }
-  saveAutomicComment() {
+
+  updateCurrentUserNames(){
+    let namePart:string[] = this.selectedTask.workingFullName?.split(" ") ?? [];
+    this.currentUserFirstName=namePart[0]
+    this.currentUserLastName=namePart[1]
+    if (this.selectedTask.workingFullName!=null && this.selectedTask.workingFullName != '')
+    {
+      this.activity="IN PROGRESS BY"
+    }
+  }
+  saveAutomaticComment() {
   const data={
     status:this.selectedTask.status,
     text:"Task moved to " +this.selectedTask.status,
@@ -78,7 +82,7 @@ export class TaskDetailsFormComponent implements OnInit {
       {
       this.updateTask();
       if(this.originalStatus!=this.selectedTask.status){
-        this.saveAutomicComment();
+        this.saveAutomaticComment();
       }
 
       }
@@ -91,6 +95,8 @@ export class TaskDetailsFormComponent implements OnInit {
     if (this.activity=="WAITING") {
       this.activity = 'IN PROGRESS BY';
       change = `${this.store.currentUser.firstName} ${this.store.currentUser.lastName}`
+      this.currentUserFirstName=this.store.currentUser.firstName
+      this.currentUserLastName=this.store.currentUser.lastName
     } else {
       this.activity = 'WAITING';
       change=""
@@ -98,7 +104,6 @@ export class TaskDetailsFormComponent implements OnInit {
       this.currentUserLastName=""
     }
     this.updateTask(change);
-
   }
 
 
