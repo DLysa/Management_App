@@ -56,7 +56,7 @@ export class DeleteStatusComponent {
 
         if (findTask!=null){
           let data;
-          if(existingStatus!=undefined && findTask.status=="TO_TESTS"){
+          if(existingStatus!=undefined && findTask.status=="TO TESTS"){
             data = {
               id: findTask.id,
               title: findTask.title,
