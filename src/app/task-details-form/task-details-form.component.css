@@ -7,11 +7,22 @@
   min-height: 185px;
 }
 
+.title_input{
+width: 600px;
+}
+
+.description_input{
+width: 600px;
+}
+
 .title{
-  margin-right: 100px;
+  margin-right: 120px;
   font-size: 22px;
   font-weight: bold;
   padding-bottom: 20px;
+  word-wrap: break-word;
+  max-width: 1350px;
+  overflow-x: hidden;
 }
 
 .title-field {
@@ -66,7 +77,7 @@
 
 
 .description{
-  word-wrap: normal;
+  word-wrap: break-word;
   width: 100%;
 }
 

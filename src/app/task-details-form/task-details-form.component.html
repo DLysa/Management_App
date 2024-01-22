@@ -8,16 +8,17 @@
   <div class="content">
 
     <div *ngIf="action!='Edit'; else elseBlock">
-      <mat-form-field appearance="outline" >
+      <mat-form-field appearance="outline" class="title_input">
+        <mat-label class="description-field-label">Title:</mat-label>
         <input matInput class="title-field" type="text" [(ngModel)]="selectedTask.title" value="{{selectedTask.title}}"><br>
       </mat-form-field>
       <br>
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="description_input">
         <mat-label class="description-field-label">Description:</mat-label>
         <input matInput class="description-input" type="text" [(ngModel)]="selectedTask.description" value="{{selectedTask.description}}">
       </mat-form-field>
       <br>
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="status_input">
         <mat-label class="status-field-label">Status:</mat-label>
         <mat-select class="status-input" type="text" [(ngModel)]="selectedTask.status" value="{{selectedTask.status}}">
           <mat-option *ngFor="let status of orderStatus" [value]="status.name">
