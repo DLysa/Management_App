@@ -1,3 +1,9 @@
 button:focus{
   background: #D01010;
 }
+.mat-dialog-actions{
+  justify-content: right;
+}
+#status{
+margin-left:13px;
+}
