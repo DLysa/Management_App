@@ -26,7 +26,7 @@ export class AddStatusFormComponent {
 
   saveStatus(): void {
     const data = {
-      id: this.newStatus.id,    //todo here maybe can be mistake
+      id: this.newStatus.id,
       name: this.newStatus.name
     };
 

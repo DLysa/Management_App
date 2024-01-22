@@ -30,7 +30,7 @@ export class ConfirmationResetStatusComponent {
 
     for (let i = 0; i < this.defaultStatusType.length; i++) {
 
-      this.taskService.addStatus(this.defaultStatusType[i])
+      this.taskService.resetStatus(this.defaultStatusType[i])
         .subscribe({
           next: (res) => {
             console.log(res);

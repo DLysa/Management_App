@@ -25,6 +25,8 @@ export class DeleteStatusComponent {
 
   deleteStatus(selectedStatus: Status):void {
 
+    console.log(selectedStatus)
+
     this.taskService.deleteStatus(selectedStatus)
       .subscribe({
         next: (res) => {
@@ -54,7 +56,7 @@ export class DeleteStatusComponent {
 
         if (findTask!=null){
           let data;
-          if(existingStatus!=undefined && findTask.status=="TO_TESTS"){
+          if(existingStatus!=undefined && findTask.status=="TO TESTS"){
             data = {
               id: findTask.id,
               title: findTask.title,

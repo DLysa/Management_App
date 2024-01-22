@@ -73,8 +73,8 @@
 .user-inprogress{
   word-wrap: normal;
   position: absolute;
-  right:  85px;
-  top: 150px;
+  right:  90px;
+  top: 155px;
   font-weight: bold;
   font-size: 22px;
   width: 30px;
@@ -82,8 +82,8 @@
 
 }
 .lastname {
-  top: 180px;
-  right: 108px;
+  top: 185px;
+  right: 100px;
 }
 
 button:focus{

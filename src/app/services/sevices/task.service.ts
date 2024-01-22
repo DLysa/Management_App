@@ -43,6 +43,10 @@ private  baseUrl = "http://localhost:8080/api/";
     return this.http.post(`${this.baseUrl}addStatus`,data);
   }
 
+  resetStatus(data: Status): Observable<any>{
+    return this.http.post(`${this.baseUrl}resetStatus`,data);
+  }
+
   deleteStatus(id: any): Observable<any> {
     return this.http.delete(`${(this.baseUrl)}deleteStatus/${id}`);
   }
