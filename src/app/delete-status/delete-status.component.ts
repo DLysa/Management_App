@@ -25,6 +25,8 @@ export class DeleteStatusComponent {
 
   deleteStatus(selectedStatus: Status):void {
 
+    console.log(selectedStatus)
+
     this.taskService.deleteStatus(selectedStatus)
       .subscribe({
         next: (res) => {
