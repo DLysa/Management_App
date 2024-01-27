@@ -53,10 +53,7 @@ export class TableComponent implements OnInit, AfterViewInit{
   private waitForCurrentUser() {
 
     if (this.store.currentUser){
-    //  this.roles = this.userInfo.roles.map((role: { authority: any; }) => role.authority.replace('ROLE_',''))
-   //     .join(', ');
-    //  if(this.store.currentUser.roles!="MANAGER")
-    //HERE!
+
       {
 
       this.currentUserFullName=`${this.store.currentUser.firstName} ${this.store.currentUser.lastName}`;
