@@ -53,12 +53,7 @@ export class TableComponent implements OnInit, AfterViewInit{
   private waitForCurrentUser() {
 
     if (this.store.currentUser){
-
-      {
-
       this.currentUserFullName=`${this.store.currentUser.firstName} ${this.store.currentUser.lastName}`;
-      }
-      console.log("HERE")
       let convert:any=this.store.currentUser.roles[0];
       this.roles=convert.authority.split('ROLE_')[1];
     }else {
