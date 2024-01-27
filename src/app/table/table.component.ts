@@ -14,7 +14,7 @@ import {LocalService} from "../local/local.service";
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit{
+export class TableComponent implements OnInit, AfterViewInit{
 
   tasks: Task[];
   task: Task;
@@ -24,9 +24,12 @@ export class TableComponent implements OnInit{
   x:number=0;
   order:string|null;
   order2:Status[];
+  currentUserFullName: string;
+  roles: string;
   constructor(private taskService: TaskService, protected store: Store, private dialog: MatDialog, private localStore: LocalService) {
-
   }
+
+
 
   ngOnInit():void {
     this.refresh()
@@ -41,6 +44,29 @@ export class TableComponent implements OnInit{
     }
     console.log("init table storage oder")
     console.log(this.store.orderStatus)
+  }
+
+  ngAfterViewInit(): void {
+    this.waitForCurrentUser();
+  }
+
+  private waitForCurrentUser() {
+
+    if (this.store.currentUser){
+    //  this.roles = this.userInfo.roles.map((role: { authority: any; }) => role.authority.replace('ROLE_',''))
+   //     .join(', ');
+    //  if(this.store.currentUser.roles!="MANAGER")
+    //HERE!
+      {
+
+      this.currentUserFullName=`${this.store.currentUser.firstName} ${this.store.currentUser.lastName}`;
+      }
+      console.log("HERE")
+      let convert:any=this.store.currentUser.roles[0];
+      this.roles=convert.authority.split('ROLE_')[1];
+    }else {
+      setTimeout(() => this.waitForCurrentUser(), 100);
+    }
   }
 
   refresh(this: any){
@@ -125,4 +151,6 @@ export class TableComponent implements OnInit{
     this.taskDraged = taskDraged;
 
   }
+
+
 }

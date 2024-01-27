@@ -18,6 +18,10 @@ export class HeaderComponent  implements OnInit {
   constructor(private authService: AuthService, private userService: UserServiceService, private store:Store) {}
 
   ngOnInit() {
+   this.loadUser()
+  }
+
+  loadUser(){
     this.userService.getUserInfo().subscribe(
       data => {
         this.userInfo = data;
@@ -25,6 +29,8 @@ export class HeaderComponent  implements OnInit {
         this.fullName = `${this.userInfo.firstName} ${this.userInfo.lastName}`;
         this.roles = this.userInfo.roles.map((role: { authority: any; }) => role.authority.replace('ROLE_',''))
           .join(', ');
+        console.log("XD")
+        console.log(this.roles)
 
       },
       error => {

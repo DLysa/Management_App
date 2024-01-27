@@ -8,6 +8,7 @@ import {Role} from "../role";
   providedIn: 'root'
 })
 export class Store {
+
   selectedTask : Task ;
   statusType : Status[];
   orderStatus : Status[];
