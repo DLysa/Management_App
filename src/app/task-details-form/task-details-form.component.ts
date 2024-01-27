@@ -7,6 +7,7 @@ import {Status} from "../status";
 import {CommentService} from "../services/sevices/comment.service";
 import {Comment} from "../comment";
 import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
+import {readableStreamLikeToAsyncGenerator} from "rxjs/internal/util/isReadableStreamLike";
 
 @Component({
   selector: 'app-task-details-form',
@@ -29,12 +30,12 @@ export class TaskDetailsFormComponent implements OnInit {
               private commentService: CommentService) {
 
     this.selectedTask = store.selectedTask;
-    this.orderStatus = store.orderStatus;
+
 
   }
 
   ngOnInit(): void {
-
+    this.statusesForRoles();
     this.loadTasks();
   }
 
@@ -47,7 +48,16 @@ export class TaskDetailsFormComponent implements OnInit {
       this.updateCurrentUserNames();
     });
   }
+  statusesForRoles(){
+    this.orderStatus=this.store.orderStatus;
+    let convert:any=this.store.currentUser.roles[0];
+    let roles=convert.authority.split('ROLE_')[1];
+    console.log(roles)
+    if (roles=="PROGRAMMER "){
+      this.orderStatus=this.orderStatus.slice(0,2)
+    }
 
+ }
   updateCurrentUserNames(){
     let namePart:string[] = this.selectedTask.workingFullName?.split(" ") ?? [];
     this.currentUserFirstName=namePart[0]
