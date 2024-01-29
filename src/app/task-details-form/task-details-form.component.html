@@ -11,11 +11,11 @@
       {{status.name}}
     </mat-option>
   </mat-select><br>-->
-  <mat-form-field appearance="outline" class="assignee_input">
+  <mat-form-field *ngIf="roles === 'MANAGER '" appearance="outline" class="assignee_input">
     <mat-label class="assignee-field-label">Assigned to:</mat-label>
-    <mat-select class="assignee-input" type="text" [(ngModel)]="selectedTask.status" value="{{selectedTask.status}}">
-      <mat-option *ngFor="let status of orderStatus" [value]="status.name">
-        {{status.name}}
+    <mat-select *ngIf="roles === 'MANAGER '"  class="assignee_input" type="text" [(ngModel)]="selectedTask.workingFullName" value="{{selectedTask.workingFullName}}" (selectionChange)="onUserSelect($event)">
+      <mat-option *ngFor="let user of assignableUsers" [value]="user.firstName">
+        {{user.firstName}} {{user.lastName}} - {{user.roles[0].role}}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -44,7 +44,7 @@
 
 
     </div>
-    <div>
+    <div *ngIf="roles !== 'MANAGER '">
       <div class="user-inprogress firstname"> {{currentUserFirstName }} </div>
       <div class="user-inprogress lastname" > {{currentUserLastName }} </div>
     </div>
