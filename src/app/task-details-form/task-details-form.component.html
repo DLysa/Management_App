@@ -2,23 +2,10 @@
   <!--  <h2 mat-dialog-title></h2>-->
   <button mat-raised-button color="primary" id=edit-btn (click)="editClick()"  > {{action}}</button>
   <button mat-raised-button style="background-color:#A50087;color:white " id="delete-btn" (click)="deleteTask()"> Delete</button>
+  <div *ngIf="roles !== 'MANAGER '">
+  <button  mat-button color="warn" class="in_progress" (click)="activityChange()">{{activity}}</button>
+  </div>
 
-
-  <button *ngIf="roles !== 'MANAGER '" mat-button color="warn" class="in_progress" (click)="activityChange()">{{activity}}</button>
-
-  <!--<mat-select *ngIf="roles === 'MANAGER '"  class="in_progress manager" type="text" [(ngModel)]="selectedTask.status" value="{{selectedTask.status}}">
-    <mat-option *ngFor="let status of orderStatus" [value]="status.name" ><br>
-      {{status.name}}
-    </mat-option>
-  </mat-select><br>-->
-  <mat-form-field *ngIf="roles === 'MANAGER '" appearance="outline" class="assignee_input">
-    <mat-label class="assignee-field-label">Assigned to:</mat-label>
-    <mat-select *ngIf="roles === 'MANAGER '"  class="assignee_input" type="text" [(ngModel)]="selectedTask.workingFullName" value="{{selectedTask.workingFullName}}" (selectionChange)="onUserSelect($event)">
-      <mat-option *ngFor="let user of assignableUsers" [value]="user.firstName">
-        {{user.firstName}} {{user.lastName}} - {{user.roles[0].role}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
   <div class="content">
 
     <div *ngIf="action!='Edit'; else elseBlock">
@@ -41,13 +28,21 @@
         </mat-select>
       </mat-form-field>
 
+      <mat-form-field *ngIf="roles === 'MANAGER '" appearance="outline" class="assignee-input">
+        <mat-label class="assignee-field-label">Assigned to:</mat-label>
+        <mat-select class="assignee-input-select" type="text" [(ngModel)]="selectedTask.workingFullName" value="{{selectedTask.workingFullName}}" (selectionChange)="onUserSelect($event)">
+          <mat-option class="chuj" *ngFor="let user of assignableUsers" [value]="user.firstName + user.lastName">
+            {{user.firstName}} {{user.lastName}} - {{user.roles[0].role}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
+      <div *ngIf="roles !== 'MANAGER '" >
+        <div class="user-inprogress firstname"> {{currentUserFirstName }} </div>
+        <div class="user-inprogress lastname" > {{currentUserLastName }} </div>
+      </div>
+    </div>
 
-    </div>
-    <div *ngIf="roles !== 'MANAGER '">
-      <div class="user-inprogress firstname"> {{currentUserFirstName }} </div>
-      <div class="user-inprogress lastname" > {{currentUserLastName }} </div>
-    </div>
     <ng-template #elseBlock>
       <div class="title">
         {{selectedTask.title}}
@@ -61,7 +56,10 @@
         <label class="status-label">Status:</label> <br>
         {{selectedTask.status}}
       </div>
-
+      <div >
+        <div class="user-inprogress firstname"> {{currentUserFirstName }} </div>
+        <div class="user-inprogress lastname" > {{currentUserLastName }} </div>
+      </div>
     </ng-template>
   </div>
 

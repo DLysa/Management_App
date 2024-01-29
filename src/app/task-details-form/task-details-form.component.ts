@@ -68,6 +68,7 @@ export class TaskDetailsFormComponent implements OnInit {
  }
   updateCurrentUserNames(){
     let namePart:string[] = this.selectedTask.workingFullName?.split(" ") ?? [];
+    console.log(namePart)
     this.currentUserFirstName=namePart[0]
     this.currentUserLastName=namePart[1]
     if (this.selectedTask.workingFullName!=null && this.selectedTask.workingFullName != '')
@@ -98,7 +99,7 @@ export class TaskDetailsFormComponent implements OnInit {
     } else {
       this.action = 'Edit';
       {
-      this.updateTask();
+      this.updateTask(this.selectedTask.workingFullName);
       if(this.originalStatus!=this.selectedTask.status){
         this.saveAutomaticComment();
       }
@@ -174,7 +175,8 @@ export class TaskDetailsFormComponent implements OnInit {
 
   onUserSelect(event: any): void {
     const selectedName = event.value.replace(/([A-Z])/g, ' $1').trim();
-
+    console.log("TUTEEEEEEEEEEEEEEEEJ")
+    console.log(selectedName)
    this.updateTask(selectedName)
   }
 
