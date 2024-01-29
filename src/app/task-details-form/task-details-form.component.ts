@@ -23,6 +23,7 @@ export class TaskDetailsFormComponent implements OnInit {
   currentUserFirstName: string;
   currentUserLastName: string;
   originalStatus: string;
+  roles:string;
   constructor(private taskService: TaskService,
               private store: Store,
               public dialog: MatDialog,
@@ -51,9 +52,8 @@ export class TaskDetailsFormComponent implements OnInit {
   statusesForRoles(){
     this.orderStatus=this.store.orderStatus;
     let convert:any=this.store.currentUser.roles[0];
-    let roles=convert.authority.split('ROLE_')[1];
-    console.log(roles)
-    if (roles=="PROGRAMMER "){
+    this.roles=convert.authority.split('ROLE_')[1];
+    if (this.roles=="PROGRAMMER "){
       this.orderStatus=this.orderStatus.slice(0,2)
     }
 

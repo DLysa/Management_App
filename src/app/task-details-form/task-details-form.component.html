@@ -3,7 +3,12 @@
   <button mat-raised-button color="primary" id=edit-btn (click)="editClick()"  > {{action}}</button>
   <button mat-raised-button style="background-color:#A50087;color:white " id="delete-btn" (click)="deleteTask()"> Delete</button>
 
-  <button mat-button color="warn" id="inprogress" (click)="activityChange()">{{activity}}</button>
+  <button *ngIf="roles !== 'MANAGER '" mat-button color="warn" class="in_progress" (click)="activityChange()">{{activity}}</button>
+  <mat-select *ngIf="roles === 'MANAGER '"  class="in_progress manager" type="text" [(ngModel)]="selectedTask.status" value="{{selectedTask.status}}">
+    <mat-option *ngFor="let status of orderStatus" [value]="status.name">
+      {{status.name}}
+    </mat-option>-
+  </mat-select>
 
   <div class="content">
 
@@ -27,8 +32,10 @@
         </mat-select>
       </mat-form-field>
     </div>
-<div class="user-inprogress firstname"> {{currentUserFirstName }} </div>
-    <div class="user-inprogress lastname" > {{currentUserLastName }} </div>
+    <div>
+      <div class="user-inprogress firstname"> {{currentUserFirstName }} </div>
+      <div class="user-inprogress lastname" > {{currentUserLastName }} </div>
+    </div>
     <ng-template #elseBlock>
       <div class="title">
         {{selectedTask.title}}
