@@ -3,13 +3,22 @@
   <button mat-raised-button color="primary" id=edit-btn (click)="editClick()"  > {{action}}</button>
   <button mat-raised-button style="background-color:#A50087;color:white " id="delete-btn" (click)="deleteTask()"> Delete</button>
 
-  <button *ngIf="roles !== 'MANAGER '" mat-button color="warn" class="in_progress" (click)="activityChange()">{{activity}}</button>
-  <mat-select *ngIf="roles === 'MANAGER '"  class="in_progress manager" type="text" [(ngModel)]="selectedTask.status" value="{{selectedTask.status}}">
-    <mat-option *ngFor="let status of orderStatus" [value]="status.name">
-      {{status.name}}
-    </mat-option>-
-  </mat-select>
 
+  <button *ngIf="roles !== 'MANAGER '" mat-button color="warn" class="in_progress" (click)="activityChange()">{{activity}}</button>
+
+  <!--<mat-select *ngIf="roles === 'MANAGER '"  class="in_progress manager" type="text" [(ngModel)]="selectedTask.status" value="{{selectedTask.status}}">
+    <mat-option *ngFor="let status of orderStatus" [value]="status.name" ><br>
+      {{status.name}}
+    </mat-option>
+  </mat-select><br>-->
+  <mat-form-field appearance="outline" class="assignee_input">
+    <mat-label class="assignee-field-label">Assigned to:</mat-label>
+    <mat-select class="assignee-input" type="text" [(ngModel)]="selectedTask.status" value="{{selectedTask.status}}">
+      <mat-option *ngFor="let status of orderStatus" [value]="status.name">
+        {{status.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
   <div class="content">
 
     <div *ngIf="action!='Edit'; else elseBlock">
@@ -28,9 +37,12 @@
         <mat-select class="status-input" type="text" [(ngModel)]="selectedTask.status" value="{{selectedTask.status}}">
           <mat-option *ngFor="let status of orderStatus" [value]="status.name">
             {{status.name}}
-          </mat-option>-
+          </mat-option>
         </mat-select>
       </mat-form-field>
+
+
+
     </div>
     <div>
       <div class="user-inprogress firstname"> {{currentUserFirstName }} </div>

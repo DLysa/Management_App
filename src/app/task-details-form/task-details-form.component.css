@@ -4,7 +4,7 @@
   margin-left: 20px;
   margin-top: 30px;
   line-height: 35px;
-  min-height: 185px;
+  min-height: 165px;
 }
 
 .title_input{
@@ -51,10 +51,11 @@ width: 500px;
   font-size: 12px;
   font-weight: bolder;
 }
+
 #edit-btn{
  position: absolute;
   right: 5px;
-  top: 5px;
+  top: 15px;
   margin: 20px;
 }
 
@@ -62,21 +63,28 @@ width: 500px;
 #delete-btn{
   position: absolute;
   right: 5px;
-  top: 55px;
+  top: 65px;
   margin: 20px;
 }
 
 .in_progress{
   position: absolute;
   right:5px;
-  top:105px;
+  top:115px;
   margin:20px;
   color:blue;
   font-weight: bold;
 }
 
 .manager{
-  width: 20px ;
+  Width: 200px;
+  }
+
+.assignee_input{
+ position: absolute;
+  right: 5px;
+  top: 115px;
+  margin: 20px;
 }
 
 .description{
