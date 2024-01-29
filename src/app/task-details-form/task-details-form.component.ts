@@ -8,6 +8,8 @@ import {CommentService} from "../services/sevices/comment.service";
 import {Comment} from "../comment";
 import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
 import {readableStreamLikeToAsyncGenerator} from "rxjs/internal/util/isReadableStreamLike";
+import {User} from "../user";
+import {UserServiceService} from "../services/user-service/user-service.service";
 
 @Component({
   selector: 'app-task-details-form',
@@ -24,7 +26,12 @@ export class TaskDetailsFormComponent implements OnInit {
   currentUserLastName: string;
   originalStatus: string;
   roles:string;
+  assignableUsers:User[];
+  private users: User[]=[];
+  mojastara: string;
+
   constructor(private taskService: TaskService,
+              private userService: UserServiceService,
               private store: Store,
               public dialog: MatDialog,
               private dialogRef: MatDialogRef<TaskDetailsFormComponent>,
@@ -38,6 +45,7 @@ export class TaskDetailsFormComponent implements OnInit {
   ngOnInit(): void {
     this.statusesForRoles();
     this.loadTasks();
+    this.getAssignableUsers();
   }
 
   loadTasks(){
@@ -45,7 +53,7 @@ export class TaskDetailsFormComponent implements OnInit {
       // console.log(data);
       this.selectedTask = data;
       this.originalStatus = data.status
-
+      console.log(this.selectedTask)
       this.updateCurrentUserNames();
     });
   }
@@ -147,6 +155,27 @@ export class TaskDetailsFormComponent implements OnInit {
         error: (e) => console.error(e)
       });
     this.dialogRef.close();
+  }
+
+
+
+  getAssignableUsers():void{
+  let convert:any;
+    this.userService.getAllUsers().subscribe((data: User[]) => {
+      this.users = data;
+
+      console.log(this.users[0].roles[0].role)
+
+      this.assignableUsers = this.users.filter(user =>
+        user.roles[0].role === 'TESTER ' || user.roles[0].role === 'PROGRAMMER '
+      );
+  })
+  }
+
+  onUserSelect(event: any): void {
+    const selectedName = event.value.replace(/([A-Z])/g, ' $1').trim();
+
+   this.updateTask(selectedName)
   }
 
 

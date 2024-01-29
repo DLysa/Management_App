@@ -4,9 +4,9 @@
   <button mat-raised-button style="background-color:#A50087;color:white " id="delete-btn" (click)="deleteTask()"> Delete</button>
 
   <button *ngIf="roles !== 'MANAGER '" mat-button color="warn" class="in_progress" (click)="activityChange()">{{activity}}</button>
-  <mat-select *ngIf="roles === 'MANAGER '"  class="in_progress manager" type="text" [(ngModel)]="selectedTask.status" value="{{selectedTask.status}}">
-    <mat-option *ngFor="let status of orderStatus" [value]="status.name">
-      {{status.name}}
+  <mat-select *ngIf="roles === 'MANAGER '"  class="in_progress manager" type="text" [(ngModel)]="selectedTask.workingFullName" value="{{selectedTask.workingFullName}}" (selectionChange)="onUserSelect($event)">
+    <mat-option *ngFor="let user of assignableUsers" [value]="user.firstName">
+      {{user.firstName}} {{user.lastName}} - {{user.roles[0].role}}
     </mat-option>-
   </mat-select>
 
