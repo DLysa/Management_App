@@ -66,6 +66,7 @@ export class TaskDetailsFormComponent implements OnInit {
     }
 
  }
+
   updateCurrentUserNames(){
     let namePart:string[] = this.selectedTask.workingFullName?.split(" ") ?? [];
     console.log(namePart)
@@ -76,6 +77,8 @@ export class TaskDetailsFormComponent implements OnInit {
       this.activity="IN PROGRESS BY"
     }
   }
+
+
   saveAutomaticComment() {
   const data={
     status:this.selectedTask.status,
@@ -98,31 +101,33 @@ export class TaskDetailsFormComponent implements OnInit {
       this.action = 'Save';
     } else {
       this.action = 'Edit';
-      {
+
       this.updateTask(this.selectedTask.workingFullName);
       if(this.originalStatus!=this.selectedTask.status){
         this.saveAutomaticComment();
-      }
 
       }
+
     }
   }
 
   activityChange() {
-    let change:String;
 
-    if (this.activity=="WAITING") {
-      this.activity = 'IN PROGRESS BY';
-      change = `${this.store.currentUser.firstName} ${this.store.currentUser.lastName}`
-      this.currentUserFirstName=this.store.currentUser.firstName
-      this.currentUserLastName=this.store.currentUser.lastName
-    } else {
-      this.activity = 'WAITING';
-      change=""
-      this.currentUserFirstName=""
-      this.currentUserLastName=""
+    let change:String;
+    if (this.roles!="GUEST "){
+      if (this.activity=="WAITING") {
+        this.activity = 'IN PROGRESS BY';
+        change = `${this.store.currentUser.firstName} ${this.store.currentUser.lastName}`
+        this.currentUserFirstName=this.store.currentUser.firstName
+        this.currentUserLastName=this.store.currentUser.lastName
+      } else {
+        this.activity = 'WAITING';
+        change=""
+        this.currentUserFirstName=""
+        this.currentUserLastName=""
+      }
+      this.updateTask(change);
     }
-    this.updateTask(change);
   }
 
 
@@ -174,11 +179,15 @@ export class TaskDetailsFormComponent implements OnInit {
   }
 
   onUserSelect(event: any): void {
-    const selectedName = event.value.replace(/([A-Z])/g, ' $1').trim();
-    console.log("TUTEEEEEEEEEEEEEEEEJ")
-    console.log(selectedName)
+    let selectedName
+    if (event.value!=undefined){
+   selectedName = event.value.replace(/([A-Z])/g, ' $1').trim();
+    }else{
+      selectedName = ""
+    }
    this.updateTask(selectedName)
-  }
+
+    }
 
 
   close() {

@@ -1,8 +1,8 @@
 <div class = "container">
 
- <button mat-raised-button style="background-color:#A50087;color:white "  id="task-btn" (click)="openDialogTask()"> Add task <mat-icon>add</mat-icon></button>
+ <button *ngIf="roles!=='GUEST '" mat-raised-button style="background-color:#A50087;color:white "  id="task-btn" (click)="openDialogTask()"> Add task <mat-icon>add</mat-icon></button>
 
-  <button mat-raised-button style="background-color:#A50087;color:white " id="options-btn" [matMenuTriggerFor]="menu"> More options <mat-icon>menu</mat-icon></button>
+  <button  *ngIf="roles==='MANAGER ' || roles ==='TESTER '" mat-raised-button style="background-color:#A50087;color:white " id="options-btn" [matMenuTriggerFor]="menu"> More options <mat-icon>menu</mat-icon></button>
   <mat-menu #menu="matMenu" id="matMenu">
     <app-options-list></app-options-list>
   </mat-menu>
