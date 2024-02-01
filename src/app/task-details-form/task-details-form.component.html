@@ -2,7 +2,7 @@
   <!--  <h2 mat-dialog-title></h2>-->
   <div *ngIf="roles !== 'GUEST '">
   <button mat-raised-button color="primary" id=edit-btn (click)="editClick()"  > {{action}}</button>
-  <button mat-raised-button style="background-color:#A50087;color:white " id="delete-btn" (click)="deleteTask()"> Delete</button>
+  <button *ngIf="!selectedTask.archive" mat-raised-button style="background-color:#A50087;color:white " id="delete-btn" (click)="archiveTask()"> Archive </button>
   </div>
   <div *ngIf="roles !== 'MANAGER '">
   <button  mat-button color="warn" class="in_progress" (click)="activityChange()">{{activity}}</button>
@@ -29,19 +29,15 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-
       <mat-form-field *ngIf="roles === 'MANAGER '" appearance="outline" class="assignee-input">
         <mat-label class="assignee-field-label">Assigned to:</mat-label>
         <mat-select class="assignee-input-select" type="text" [(ngModel)]="selectedTask.workingFullName" value="{{selectedTask.workingFullName}}" (selectionChange)="onUserSelect($event)">
           <mat-option>None</mat-option>
-          <mat-option *ngFor="let user of assignableUsers" [value]="user.firstName + user.lastName">
+          <mat-option *ngFor="let user of assignableUsers" [value]="user.firstName + ' ' + user.lastName">
             {{user.firstName}} {{user.lastName}} - {{user.roles[0].role}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-
-
-
 
       <div *ngIf="roles !== 'MANAGER '" >
         <div class="user-inprogress firstname"> {{currentUserFirstName }} </div>

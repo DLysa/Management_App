@@ -19,7 +19,8 @@ export class AddTaskFormComponent implements OnInit {
     title: '',
     description: '',
     status: '',
-    insertedUserFullName:''
+    insertedUserFullName:'',
+    archive:false
   };
 
   constructor(private taskService: TaskService,
@@ -40,7 +41,8 @@ export class AddTaskFormComponent implements OnInit {
       title: this.newTask.title,
       description: this.newTask.description,
       status: "TO TESTS",
-      insertedUserFullName:this.store.currentUser.firstName +" "+ this.store.currentUser.lastName
+      insertedUserFullName:this.store.currentUser.firstName +" "+ this.store.currentUser.lastName,
+      archive:false
     };//TODO IF NOT TEST THEN FIRST BYLO JUZ
 
     this.taskService.addTask(data)

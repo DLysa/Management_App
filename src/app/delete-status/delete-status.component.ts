@@ -61,7 +61,10 @@ export class DeleteStatusComponent {
               id: findTask.id,
               title: findTask.title,
               description: findTask.description,
-              status: "TO TESTS"
+              status: "TO TESTS",
+              workingFullName: findTask.workingFullName,
+              insertedUserFullName: findTask.insertedUserFullName,
+              archive:findTask.archive
             };
 
           }else{
@@ -69,7 +72,10 @@ export class DeleteStatusComponent {
               id: findTask.id,
               title: findTask.title,
               description: findTask.description,
-              status: this.orderStatus[0].name
+              status: this.orderStatus[0].name,
+              workingFullName: findTask.workingFullName,
+              insertedUserFullName: findTask.insertedUserFullName,
+              archive:findTask.archive
             };
           }
 

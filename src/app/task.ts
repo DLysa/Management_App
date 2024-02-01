@@ -5,5 +5,6 @@ export class Task {
   status: string;
   insertedUserFullName:string;
   workingFullName?:string;
+  archive: boolean;
 
 }

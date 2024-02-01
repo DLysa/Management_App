@@ -13,7 +13,11 @@
     >
       <div>
         <ng-container *ngFor="let task of tasks">
-          <div [ngStyle]="{'background-color': currentUserFullName === task.workingFullName ? '#05AE18' : (roles === 'MANAGER ' && (task.workingFullName === null ||  task.workingFullName==='') ? '#FD6262' : 'otherColor')}" class="box" *ngIf="status.name==task.status" (click)="openDialog(task)" cdkDrag>
+          <div
+            [ngStyle]="{'background-color': currentUserFullName === task.workingFullName ? '#05AE18' :
+          (roles === 'MANAGER ' && (task.workingFullName===null ||  task.workingFullName==='') ? '#FD6262' :
+          'otherColor')}"
+               class="box" *ngIf="status.name==task.status" (click)="openDialog(task)" cdkDrag>
           <div class="title-on-task">
               {{task.title}}
             </div>

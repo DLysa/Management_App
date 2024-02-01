@@ -37,6 +37,8 @@ import { ProjectSettingsComponent } from './project-settings/project-settings.co
 import { AdminComponent } from './admin/admin.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
+import { ArchivedTasksComponent } from './archived-tasks/archived-tasks.component';
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -59,6 +61,7 @@ import { DeleteUserComponent } from './delete-user/delete-user.component';
     AdminComponent,
     AddUserComponent,
     DeleteUserComponent,
+    ArchivedTasksComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +83,7 @@ import { DeleteUserComponent } from './delete-user/delete-user.component';
     MatInputModule,
     MatSelectModule,
     MatMenuModule,
+    MatTableModule,
 
   ],
   providers: [TableComponent,AuthService],

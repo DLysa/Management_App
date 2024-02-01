@@ -8,6 +8,7 @@ import {Store} from "../store/store";
 import {Status} from "../status";
 import {classNames} from "@angular/cdk/schematics";
 import {LocalService} from "../local/local.service";
+import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
 
 @Component({
   selector: 'app-table',
@@ -59,13 +60,21 @@ export class TableComponent implements OnInit, AfterViewInit{
     }else {
       setTimeout(() => this.waitForCurrentUser(), 100);
     }
+
+    //access to all tasks for manager
+    console.log("current")
+    console.log(this.task)
+      this.tasks = this.tasks.filter(task => !task.archive)
+
+    console.log("TASK for:"+this.roles)
+    console.log(this.tasks)
   }
 
   refresh(this: any){
     this.taskService.getTasks().subscribe((data:Task[]) =>{
-      console.log(data);
-      this.tasks=data;
+      this.tasks = data.filter(task => !task.archive)
     })
+
 
     this.taskService.getAllStatus().subscribe((data:Status[]) =>{
       console.log(data);

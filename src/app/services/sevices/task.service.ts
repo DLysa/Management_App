@@ -29,6 +29,15 @@ private  baseUrl = "http://localhost:8080/api/";
     return this.http.get(`${this.baseUrl}showTask/${id}`);
   }
 
+
+  archiveTask(data: any): Observable<any>{
+    return this.http.post(`${this.baseUrl}archiveTask`,data);
+  }
+
+  unArchiveTask(data: any): Observable<any>{
+    return this.http.post(`${this.baseUrl}unArchiveTask`,data);
+  }
+
   deleteTask(id: any): Observable<any> {
     return this.http.delete(`${(this.baseUrl)}deleteTask/${id}`);
   }

@@ -28,8 +28,6 @@ export class TaskDetailsFormComponent implements OnInit {
   roles:string;
   assignableUsers:User[];
   private users: User[]=[];
-  mojastara: string;
-
   constructor(private taskService: TaskService,
               private userService: UserServiceService,
               private store: Store,
@@ -101,13 +99,10 @@ export class TaskDetailsFormComponent implements OnInit {
       this.action = 'Save';
     } else {
       this.action = 'Edit';
-
       this.updateTask(this.selectedTask.workingFullName);
-      if(this.originalStatus!=this.selectedTask.status){
+      if (this.originalStatus != this.selectedTask.status) {
         this.saveAutomaticComment();
-
       }
-
     }
   }
 
@@ -131,13 +126,15 @@ export class TaskDetailsFormComponent implements OnInit {
   }
 
 
-  updateTask(workingFullname?:String): void {
+  updateTask(workingFullName?:String): void {
     const data = {
       id: this.selectedTask.id,
       title: this.selectedTask.title,
       description: this.selectedTask.description,
       status: this.selectedTask.status,
-      workingFullName:workingFullname
+      workingFullName: workingFullName || this.selectedTask.workingFullName,
+      insertedUserFullName:this.selectedTask.insertedUserFullName,
+      archive:this.selectedTask.archive
     };
 
     this.taskService.updateTask(data)
@@ -149,19 +146,26 @@ export class TaskDetailsFormComponent implements OnInit {
       });
   }
 
-  deleteTask():void{
-    const data = this.selectedTask.id;
+ archiveTask(): void {
+    const data = {
+      id: this.selectedTask.id,
+      title: this.selectedTask.title,
+      description: this.selectedTask.description,
+      status: this.selectedTask.status,
+      workingFullName:this.selectedTask.workingFullName,
+      insertedUserFullName: this.selectedTask.insertedUserFullName,
+      archive: this.selectedTask.archive
+    };
 
-
-    this.taskService.deleteTask(data)
+    this.taskService.archiveTask(data)
       .subscribe({
         next: (res) => {
           console.log(res);
         },
         error: (e) => console.error(e)
       });
-    this.dialogRef.close();
   }
+
 
 
 
@@ -186,9 +190,26 @@ export class TaskDetailsFormComponent implements OnInit {
       selectedName = ""
     }
    this.updateTask(selectedName)
-
+    this.automaticCommentManagerAssign()
     }
 
+    automaticCommentManagerAssign(){
+
+      const data={
+        status:this.selectedTask.status,
+        text: this.selectedTask.workingFullName+ " was assigned by "+ this.store.currentUser.firstName+" "+ this.store.currentUser.lastName + " (MANAGER)",
+        taskId:this.selectedTask.id
+      }
+
+      this.commentService.addComment(data)
+        .subscribe({
+          next: (res) => {
+            console.log(res);
+          },
+          error: (e) => console.error(e)
+        });
+
+    }
 
   close() {
     //przekazywanie zmian dla lepszego odswiezania?
