@@ -107,22 +107,21 @@ export class TaskDetailsFormComponent implements OnInit {
   }
 
   activityChange() {
-
-    let change:String;
-    if (this.roles!="GUEST "){
-      if (this.activity=="WAITING") {
+    let change: String;
+    if (this.roles != "GUEST ") {
+      if (this.activity == "WAITING") {
         this.activity = 'IN PROGRESS BY';
         change = `${this.store.currentUser.firstName} ${this.store.currentUser.lastName}`
-        this.currentUserFirstName=this.store.currentUser.firstName
-        this.currentUserLastName=this.store.currentUser.lastName
+        this.currentUserFirstName = this.store.currentUser.firstName
+        this.currentUserLastName = this.store.currentUser.lastName
       } else {
         this.activity = 'WAITING';
-        change=""
-        this.currentUserFirstName=""
-        this.currentUserLastName=""
+        change = ""
+        this.currentUserFirstName = ""
+        this.currentUserLastName = ""
       }
       this.updateTask(change);
-    }
+  }
   }
 
 

@@ -4,8 +4,8 @@
   <button mat-raised-button color="primary" id=edit-btn (click)="editClick()"  > {{action}}</button>
   <button *ngIf="!selectedTask.archive" mat-raised-button style="background-color:#A50087;color:white " id="delete-btn" (click)="archiveTask()"> Archive </button>
   </div>
-  <div *ngIf="roles !== 'MANAGER '">
-  <button  mat-button color="warn" class="in_progress" (click)="activityChange()">{{activity}}</button>
+  <div >
+  <button [disabled]="roles === 'MANAGER '" mat-button color="warn" class="in_progress" (click)="activityChange()">{{activity}}</button>
   </div>
 
   <div class="content">

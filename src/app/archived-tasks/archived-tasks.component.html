@@ -1,0 +1,57 @@
+<div class="container">
+  <h2>Archive</h2>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="Title">
+      <th mat-header-cell *matHeaderCellDef> Title </th>
+      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="Status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+    </ng-container>
+
+    <!-- Inserted User Column -->
+    <ng-container matColumnDef="Inserted user">
+      <th mat-header-cell *matHeaderCellDef> Inserted User </th>
+      <td mat-cell *matCellDef="let element"> {{element.insertedUserFullName}} </td>
+    </ng-container>
+
+    <!-- Working Column -->
+    <ng-container matColumnDef="Working">
+      <th mat-header-cell *matHeaderCellDef> Working </th>
+      <td mat-cell *matCellDef="let element"> {{element.workingFullName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="See details">
+      <th mat-header-cell *matHeaderCellDef> See details </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button
+                color="primary"
+                (click)="seeDetails(element)">See details
+        </button> </td>
+    </ng-container>
+<div *ngIf="isUserManager()" >
+    <!-- Archive Column (if it's supposed to be a button or action) -->
+    <ng-container matColumnDef="Restore">
+      <th mat-header-cell *matHeaderCellDef> Restore </th>
+      <td mat-cell *matCellDef="let element"> <button mat-button (click)="unArchiveTask(element)" >Restore</button> </td>
+    </ng-container>
+
+    <!-- UnArchive Column (if it's supposed to be a button or action) -->
+    <ng-container matColumnDef="Delete">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let element"> <button mat-button color="warn" (click)="deleteTask(element)" > Delete</button> </td>
+    </ng-container>
+</div>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+
+<mat-dialog-actions class="mat-dialog-actions">
+  <button mat-raised-button color="primary" id="close" (click)="close()">Close</button>
+</mat-dialog-actions>
