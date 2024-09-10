@@ -1,3 +1,7 @@
+## Frontside of Management App more information in repository: [GitHub](https://github.com/DLysa/Management_App_Full) <img src="https://img.shields.io/badge/GitHub-FFFFFF?style=flat&logo=github&logoColor=181717" alt="GitHub" height="25"/>
+
+
+
 # ManagmentApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.5.
