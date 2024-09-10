@@ -1,4 +1,4 @@
-## Frontside of Management App more information in repository: [GitHub](https://github.com/DLysa/Management_App_Full) <img src="https://img.shields.io/badge/GitHub-FFFFFF?style=flat&logo=github&logoColor=181717" alt="GitHub" height="25"/>
+## This is only frontside of Management App full information in repository: [GitHub](https://github.com/DLysa/Management_App_Full) <img src="https://img.shields.io/badge/GitHub-FFFFFF?style=flat&logo=github&logoColor=181717" alt="GitHub" height="25"/>
 
 
 
